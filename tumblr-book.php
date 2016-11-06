@@ -11,7 +11,7 @@
 
   <script>
   var siteURL = '<?php
-  if(isset($_GET['blog'])){
+  if(isset($_GET['blog']) && $_GET['blog'] !== ''){
 	  echo 'https://' . $_GET['blog'] . '.tumblr.com/';
   }else{
 	  // temporary default

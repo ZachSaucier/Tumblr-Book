@@ -8,9 +8,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="tumblr-book.php" method="get">
-<label>Tumblr Username: <input type="text" name="blog"></label>
-<input type="submit" value="Submit">
-</form>
+	<h1>TumblrBook</h1>
+	<p>Turn any Tumblr blog into a printable book</p>
+	<form action="tumblr-book.php" method="get">
+		<div><label>Tumblr Username: <input type="text" name="blog" placeholder="solacingsavant" size="24"></label></div>
+		<div>
+		<label>Book Theme: </label>
+		<select name="theme">
+			<option>Default</option>
+		</select>
+		</div>
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>
