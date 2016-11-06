@@ -5,7 +5,8 @@ var script = document.createElement('script'),
     vidOrThumb = "thumbnail",
     videoSize = 1,
     photoSize = 1,
-    siteURL = "https://solacingsavant.tumblr.com/",
+//  moved siteURL declaration to tumblr-book.php
+//  siteURL = "https://solacingsavant.tumblr.com/",
     domain = getDomain(siteURL);
 
 script.src = 'https://api.tumblr.com/v2/blog/' + domain + '/posts?api_key=Srhk9qkcJO69pAoB4ltM5uIqpwUBO7kgDqDEaCD9Jo8EafWyHE&limit=' + limit + '&offset=' + offset + '&callback=filter';
