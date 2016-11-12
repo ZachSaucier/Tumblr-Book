@@ -14,9 +14,11 @@
 		
 		$pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 		
-		$sql = 'SELECT * FROM users u WHERE u.username="'.$_POST['username'].'";';
+		$sql = 'SELECT * FROM users u WHERE u.username=:username;';
 		
-		$q = $pdo->query($sql);
+		$q = $pdo->prepare($sql);
+		
+		$q->execute([':username' => $_POST['username']]);
 		
 		$user = $q->fetch(PDO::FETCH_ASSOC);
 		
