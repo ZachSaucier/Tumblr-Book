@@ -14,22 +14,16 @@
 		
 		$pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 		
-		$sql = 'SELECT * FROM users WHERE username=:username;';
+		$sql = 'INSERT INTO users VALUES (:username, :password);';
 		
 		$q = $pdo->prepare($sql);
 		
-		$q->execute([':username' => $_POST['username']]);
+		$success = $q->execute([':username' => $_POST['username'], ':password' => $_POST['password']]);
 		
-		$user = $q->fetch(PDO::FETCH_ASSOC);
-		
-		if($user){
-			if($user['password'] === $_POST['password']){
-				session_start();
-				$_SESSION['username'] = $_POST['username'];
-				echo '<meta http-equiv="refresh" content="0; url=index.php" />';
-			}else{
-				$invalid = True;
-			}
+		if($success){
+			session_start();
+			$_SESSION['username'] = $_POST['username'];
+			echo '<meta http-equiv="refresh" content="0; url=index.php" />';
 		}else{
 			$invalid = True;
 		}
@@ -43,15 +37,15 @@
 </head>
 <body>
 	<h1>TumblrBook</h1>
-	<h2>Login</h2>
+	<h2>Sign Up</h2>
 	<?php
 	if(isset($invalid) && $invalid === True){
-		echo '<div class="error">Invalid username or password</div>';
+		echo '<div class="error">Sign Up failed, username may be taken</div>';
 	}
 	?>
-	<form action="login.php" method="post">
+	<form action="signup.php" method="post">
 		<div><label>Username: <input type="text" name="username" size="24"></label></div>
-		<div><label>Password: <input type="password" name="password" size="24"></label></div>
+		<div><label>Password: <input type="text" name="password" size="24"></label></div>
 		<input type="submit" value="Submit">
 	</form>
 </body>

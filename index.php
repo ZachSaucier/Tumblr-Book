@@ -27,7 +27,7 @@ if(isset($_SESSION['username'])){
 	echo 'Logged in as ' . $_SESSION['username'];
 	echo '. <a href="logout.php">Logout</a>';
 }else{
-	echo '<a href="login.php">Login</a>';
+	echo '<a href="login.php">Login</a> | <a href="signup.php">Sign Up</a>';
 }
 ?>
 	</div>
