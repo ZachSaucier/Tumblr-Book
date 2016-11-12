@@ -20,5 +20,16 @@
 		</div>
 		<input type="submit" value="Submit">
 	</form>
+	<div>
+<?php
+session_start();
+if(isset($_SESSION['username'])){
+	echo 'Logged in as ' . $_SESSION['username'];
+	echo '. <a href="logout.php">Logout</a>';
+}else{
+	echo '<a href="login.php">Login</a>';
+}
+?>
+	</div>
 </body>
 </html>

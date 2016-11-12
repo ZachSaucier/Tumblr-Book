@@ -1,3 +1,8 @@
+<?php
+session_start();
+session_unset();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +13,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
-  <script src="tumblr-book.js"></script>
+	<h1>TumblrBook</h1>
+	<p>Logout successful</p>
+	<div><a href="index.php">Back</a><div>
 </body>
 </html>
