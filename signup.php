@@ -12,7 +12,7 @@
 	 require('db.php');
 	 try {
 		
-		$pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+		$pdo = db_connect();
 		
 		$sql = 'INSERT INTO users VALUES (:username, :password);';
 		
