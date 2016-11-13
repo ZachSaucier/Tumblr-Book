@@ -19,7 +19,8 @@ DROP TABLE IF EXISTS userblogs;
 CREATE TABLE userblogs(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR(255) NOT NULL,
-	blogname VARCHAR(255) NOT NULL
+	blogname VARCHAR(255) NOT NULL,
+	UNIQUE KEY(username, blogname)
 );
 
 /* some test entries */

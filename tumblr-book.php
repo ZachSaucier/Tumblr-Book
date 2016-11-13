@@ -10,15 +10,18 @@
 <body>
 
   <script>
-  var siteURL = '<?php
+  <?php
   if(isset($_GET['blog']) && $_GET['blog'] !== ''){
-	  echo 'https://' . $_GET['blog'] . '.tumblr.com/';
+	  echo 'var siteURL = "https://' . $_GET['blog'] . '.tumblr.com/";';
+	  echo 'var blogname = "' . $_GET['blog'] . '";';
   }else{
 	  // temporary default
-	  echo 'https://solacingsavant.tumblr.com/';
+	  echo 'var siteURL = "https://solacingsavant.tumblr.com/";';
+	  echo 'var blogname = "solacingsavant";';
   }
-  ?>';
+  ?>
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="tumblr-book.js"></script>
 </body>
 </html>

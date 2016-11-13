@@ -64,6 +64,19 @@ window.filter = function filter (data) {
             alert("UNKNOWN TYPE OF " + posts[i].type);
         }
     });
+	
+	$.ajax({
+		type: 'POST',
+		url: 'blog-data.php',
+		data: {blogname: blogname, content: ft.innerHTML},
+		success: function(resp){
+			console.log('blog content sent to the database');
+			console.log(resp);
+		},
+		error: function(){
+			console.log('blog content could not be saved to the database');
+		}
+	});	
 }
 
 function stripText(post) {
