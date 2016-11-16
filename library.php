@@ -26,7 +26,7 @@
 
 			$pdo = db_connect();
 
-			$sql = 'SELECT blogname FROM userblogs WHERE username=:username;';
+			$sql = 'SELECT b.blogname, b.updated FROM blogs b, userblogs ub WHERE ub.username=:username AND ub.blogname=b.blogname;';
 
 			$q = $pdo->prepare($sql);
 
@@ -39,7 +39,7 @@
 			}else{
 				echo '<ul>';
 				foreach($blogs as $blog){
-					echo '<li><a href="tumblr-book.php?blog='.$blog['blogname'].'">'.$blog['blogname'].'</a></li>';
+					echo '<li><a href="tumblr-book.php?blog='.$blog['blogname'].'">'.$blog['blogname'].'</a> (Last Updated on '.$blog['updated'].')</li>';
 				}
 				echo '</ul>';
 			}

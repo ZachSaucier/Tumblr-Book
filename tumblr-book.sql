@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS blogs;
 CREATE TABLE blogs(
 	blogname VARCHAR(255) UNIQUE NOT NULL,
 	content MEDIUMTEXT NOT NULL,
+	updated VARCHAR(255) NOT NULL,
 	PRIMARY KEY(blogname)
 );
 
@@ -25,5 +26,5 @@ CREATE TABLE userblogs(
 
 /* some test entries */
 INSERT INTO users VALUES ('mattling', 'password');
-INSERT INTO blogs VALUES ('solacingsavant', 'some content'), ('gocookyourself', 'recipes'), ('thirdblog', 'more content');
+INSERT INTO blogs VALUES ('solacingsavant', 'some content', 'November 14, 2016'), ('gocookyourself', 'recipes', 'November 14, 2016'), ('thirdblog', 'more content', 'November 14, 2016');
 INSERT INTO userblogs (username, blogname) VALUES ('mattling', 'solacingsavant'), ('mattling', 'gocookyourself');

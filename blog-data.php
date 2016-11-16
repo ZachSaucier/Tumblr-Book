@@ -5,12 +5,15 @@ if(isset($_POST['blogname']) && isset($_POST['content'])){
 
 		$pdo = db_connect();
 
-		$sql = 'INSERT INTO blogs VALUES (:blogname, :content)'
-			. 'ON DUPLICATE KEY UPDATE content=:content;';
+		$sql = 'INSERT INTO blogs VALUES (:blogname, :content, :updated)'
+			. ' ON DUPLICATE KEY UPDATE content=:content, updated=:updated;';
 
 		$q = $pdo->prepare($sql);
+		
+		$date = getdate();
+		$date = $date['month'].' '.$date['mday'].', '.$date['year'];
 
-		$success = $q->execute([':blogname' => $_POST['blogname'], ':content' => $_POST['content']]);
+		$success = $q->execute([':blogname' => $_POST['blogname'], ':content' => $_POST['content'], ':updated' => $date]);
 
 		if($success){
 			echo 'blog content stored successfully';

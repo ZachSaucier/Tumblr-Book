@@ -10,8 +10,9 @@
     position:relative;
     padding-top:1in;
     padding-bottom:0.2in;
+	overflow: auto;
 }
-#avatar { 
+#avatar {
     position:absolute;
     top:.3in; left:.5in;
 }
