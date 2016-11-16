@@ -19,6 +19,13 @@
 	  echo 'var siteURL = "https://solacingsavant.tumblr.com/";';
 	  echo 'var blogname = "solacingsavant";';
   }
+
+  if(isset($_GET['theme']) && $_GET['theme'] !== ''){
+    echo 'var theme = "' . $_GET['theme'] . '";';
+  }else{
+    // temporary default
+    echo 'var theme = "Default";';
+  }
   ?>
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

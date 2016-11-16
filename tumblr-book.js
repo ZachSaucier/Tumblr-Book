@@ -3,8 +3,8 @@ var script = document.createElement('script'),
     limit = 10,
     longCharMin = 330,
     vidOrThumb = "thumbnail",
-    videoSize = 1,
-    photoSize = 1,
+    useBigVideo = false,
+    maxNumPhotosPerPost = 999,
 //  moved siteURL declaration to tumblr-book.php
 //  siteURL = "https://solacingsavant.tumblr.com/",
     domain = getDomain(siteURL);
@@ -15,12 +15,11 @@ script.src = 'https://api.tumblr.com/v2/blog/' + domain + '/posts?api_key=Srhk9q
 indentedAppend(document.getElementsByTagName('head')[0], script);
 
 window.filter = function filter (data) {
-    var downloader = document.createElement('button');
-    downloader.id = "downloader";
-    downloader.innerText = "Download the HTML";
-    downloader.style.cursor = "pointer";
-    downloader.onclick = function() { download('tester.html') };
-    indentedAppend(document.body, downloader);
+    var printButton = document.createElement('button');
+    printButton.id = "printButton";
+    printButton.innerText = "Print this Tumblr blog";
+    printButton.onclick = function() { window.print(); };
+    indentedAppend(document.body, printButton);
     
     var posts = data.response.posts;
     var ft = document.createElement('div');
@@ -33,7 +32,7 @@ window.filter = function filter (data) {
     avatar.src = "https://api.tumblr.com/v2/blog/" + domain + "/avatar";
     indentedAppend(addedSection, avatar);
     
-    var name = document.createElement('div');
+    var name = document.createElement('h1');
     name.id = "blogName";
     name.innerText = data.response.blog.name;
     indentedAppend(addedSection, name);
@@ -82,7 +81,7 @@ window.filter = function filter (data) {
 function stripText(post) {
     var toAdd = document.createElement('div');
     toAdd.className = "post text";
-    if(post.title != null) { toAdd.innerHTML = post.title + "</br>" + post.body; }
+    if(post.title != null) { toAdd.innerHTML = post.title + "<br/>" + post.body; }
     else { toAdd.innerHTML = post.body; }
     var charCount = post.body.replace(/[^A-Z]/gi, "").length;
     if(charCount >= longCharMin) { toAdd.className = "post text big"; }
@@ -91,20 +90,25 @@ function stripText(post) {
 function stripPhoto(post) {
     var toAdd = document.createElement('div');
     var charCount = post.caption.replace(/[^A-Z]/gi, "").length;
-    if(photoSize == 2 || charCount >= longCharMin) {
-        toAdd.className = "post photo big";
-        toAdd.innerHTML = '<img src="' + post.photos[0].alt_sizes[1].url + '"/></br>' + post.caption;
+    for(var i = 0; i < post.photos.length; i++) {
+        if(i < maxNumPhotosPerPost) {
+            var imgURL = post.photos[i].alt_sizes[3].url;
+            toAdd.className = "post photo";
+            if(charCount >= longCharMin) {
+                toAdd.className += " big";
+                imgURL = post.photos[i].alt_sizes[1].url;
+            }
+            toAdd.innerHTML += '<img src="' + imgURL + '"/><br/>';
+        }
     }
-    else {
-        toAdd.className = "post photo";
-        toAdd.innerHTML = '<img src="' + post.photos[0].alt_sizes[3].url + '"/></br>' + post.caption;
-    }
+    toAdd.innerHTML += "<br/>" + post.caption;
+    
     indentedAppend(addedSection, toAdd);
 }
 function stripAudio(post) {
     var toAdd = document.createElement('div');
     toAdd.className = "post audio";
-    toAdd.innerHTML = post.player + "</br>" + post.caption;
+    toAdd.innerHTML = post.player + "<br/>" + post.caption;
     var charCount = post.caption.replace(/[^A-Z]/gi, "").length;
     if(charCount >= longCharMin) { toAdd.className = "post audio big"; }
     indentedAppend(addedSection, toAdd);
@@ -112,20 +116,20 @@ function stripAudio(post) {
 function stripVideo(post) {
     var toAdd = document.createElement('div'),
         videoPlayer;
-    if(videoSize == 2) {
+    if(!useBigVideo) {
         toAdd.className = "post video";
         videoPlayer = post.player[0].embed_code;
     }
     else {
         toAdd.className = "post video big";
-        videoPlayer = post.player[1].embed_code;
+        videoPlayer = post.player[2].embed_code;
     }
     // For thumbnail image only
     if(vidOrThumb == "thumbnail") { 
         var youTube = /youtube/gi,
             vimeo = /vimeo/gi;
         if(youTube.exec(videoPlayer)) {
-            toAdd.innerHTML = getThumbnail(videoPlayer) + "</br>" + post.caption; 
+            toAdd.innerHTML = getThumbnail(videoPlayer) + "<br/>" + post.caption; 
         }
         else if(vimeo.exec(videoPlayer)) {
             var idReg = /video\/([^]+)" w/,
@@ -136,13 +140,13 @@ function stripVideo(post) {
             indentedAppend(document.body, scripter);
             setTimeout(function() {
                 console.log("#vimeo" + id);
-                toAdd.innerHTML = "<img src='" + document.querySelector("#vimeo" + id).innerHTML + "' /> </br>" + post.caption;
+                toAdd.innerHTML = "<img src='" + document.querySelector("#vimeo" + id).innerHTML + "' /> <br/>" + post.caption;
             }, 500);
         }
     }
 
     // For whole video
-    else { toAdd.innerHTML = videoPlayer + "</br>" + post.caption; }
+    else { toAdd.innerHTML = videoPlayer + "<br/>" + post.caption; }
     var charCount = post.caption.replace(/[^A-Z]/gi, "").length;
     if(charCount >= longCharMin) { toAdd.className = "post video big"; }
     indentedAppend(addedSection, toAdd);
@@ -151,7 +155,7 @@ function stripVideo(post) {
 function stripQuote(post) {
     var toAdd = document.createElement('div');
     toAdd.className = "post quote";
-    if(post.source != null) { toAdd.innerHTML = post.text + "</br><span class='quoteAuthor'>" + post.source + "</span>"; }
+    if(post.source != null) { toAdd.innerHTML = post.text + "<br/><span class='quoteAuthor'>" + post.source + "</span>"; }
     else { toAdd.innerHTML = post.text; }
     var charCount = post.text.replace(/[^A-Z]/gi, "").length;
     if(charCount >= longCharMin) { toAdd.className = "post quote big"; }
@@ -161,9 +165,9 @@ function stripQuote(post) {
 function stripLink(post) {
     var toAdd = document.createElement('div');
     toAdd.className = "post link";
-    if(post.title != null && post.description != null) { toAdd.innerHTML = post.title + "</br>" + post.url + "</br>" + post.description; }
-    else if(post.title != null) { toAdd.innerHTML = post.title + "</br>" + post.url; }
-    else if(post.description != null) { toAdd.innerHTML = post.url + "</br>" + post.description; }
+    if(post.title != null && post.description != null) { toAdd.innerHTML = post.title + "<br/>" + post.url + "<br/>" + post.description; }
+    else if(post.title != null) { toAdd.innerHTML = post.title + "<br/>" + post.url; }
+    else if(post.description != null) { toAdd.innerHTML = post.url + "<br/>" + post.description; }
     else { toAdd.innerHTML = post.url; }
     var charCount = post.description.replace(/[^A-Z]/gi, "").length;
     if(charCount >= longCharMin) { toAdd.className = "post link big"; }
@@ -173,23 +177,13 @@ function stripLink(post) {
 function stripChat(post) {
     var toAdd = document.createElement('div');
     toAdd.className = "post chat";
-    toAdd.innerHTML = "<span class='chatTitle'>" + post.title + "</span></br>";
+    toAdd.innerHTML = "<span class='chatTitle'>" + post.title + "</span><br/>";
     for(var i = 0, j = post.dialogue.length; i < j; i++) {
-        toAdd.innerHTML += "<span class='chatName'>" + post.dialogue[i].label + "</span> " + post.dialogue[i].phrase + "</br>";
+        toAdd.innerHTML += "<span class='chatName'>" + post.dialogue[i].label + "</span> " + post.dialogue[i].phrase + "<br/>";
     }
     var charCount = post.body.replace(/[^A-Z]/gi, "").length;
     if(charCount >= longCharMin) { toAdd.className = "post chat big"; }
     indentedAppend(addedSection, toAdd);
-}
-
-function download(filename) {
-	document.body.removeChild(document.body.getElementsByTagName("script")[0]);
-	console.log(encodeURIComponent(document.documentElement.innerHTML))
-    var pom = document.createElement('a');
-    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(document.documentElement.innerHTML));
-    pom.setAttribute('download', filename);
-    pom.click();
-    pom.remove();
 }
 
 function indentedAppend(parent,child) {
