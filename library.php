@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width">
   <title>Tumblr Book</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
 </head>
 <body>
-	<h1>TumblrBook</h1>
+	<h1><a href="index.php">TumblrBook<a></h1>
+	<h3>Turn any Tumblr blog into a printable book</h3>
+	<div id="main" class="container">
 	<?php
 	session_start();
 	if(isset($_GET['user'])){
@@ -26,7 +28,7 @@
 
 			$pdo = db_connect();
 
-			$sql = 'SELECT b.blogname, b.updated FROM blogs b, userblogs ub WHERE ub.username=:username AND ub.blogname=b.blogname;';
+			$sql = 'SELECT b.blogname, b.updated FROM blogs b, userblogs ub WHERE ub.username=:username AND ub.blogname=b.blogname ORDER BY b.updated DESC;';
 
 			$q = $pdo->prepare($sql);
 
@@ -37,11 +39,9 @@
 			if(count($blogs) === 0){
 				echo '<div>'.$user.'\'s library is empty.</div>';
 			}else{
-				echo '<ul>';
 				foreach($blogs as $blog){
-					echo '<li><a href="tumblr-book.php?blog='.$blog['blogname'].'">'.$blog['blogname'].'</a> (Last Updated on '.$blog['updated'].')</li>';
+					echo '<div class="library-entry"><a href="tumblr-book.php?blog='.$blog['blogname'].'"><img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" /><br/>'.$blog['blogname'].'</a><br/><span class="updated">(Last Updated on '.$blog['updated'].')</span></div>';
 				}
-				echo '</ul>';
 			}
 
 		}catch(PDOException $e){
@@ -50,5 +50,16 @@
 		
 	}
 	?>
+	</div>
+	<div id="login" class="container">
+		<?php
+		if(isset($_SESSION['username'])){
+			echo 'Logged in as ' . $_SESSION['username'];
+			echo ' | <a href="logout.php">Logout</a>';
+		}else{
+			echo '<a href="login.php">Login</a> | <a href="signup.php">Sign Up</a>';
+		}
+		?>
+	</div>
 </body>
 </html>
