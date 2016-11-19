@@ -77,3 +77,7 @@ ul {
 	padding: 0px;
 	margin: 0px;
 }
+.error {
+    color: red;
+    font-weight: bold;
+}

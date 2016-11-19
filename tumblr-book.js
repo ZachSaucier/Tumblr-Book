@@ -17,7 +17,11 @@ window.filter = function filter (data) {
     var printButton = document.createElement('button');
     printButton.id = "printButton";
     printButton.innerText = "Print this Tumblr blog";
-    printButton.onclick = function() { window.print(); };
+    printButton.onclick = function() { 
+		printButton.style.display = "none";
+		window.print();
+		printButton.style.display = "block";
+	};
     indentedAppend(document.body, printButton);
     
     var posts = data.response.posts;

@@ -38,12 +38,12 @@
 <body>
 	<h1><a href="index.php">TumblrBook<a></h1>
 	<h3>Turn any Tumblr blog into a printable book</h3>
-	<?php
-	if(isset($invalid) && $invalid === True){
-		echo '<div class="error">Sign Up failed, username may be taken</div>';
-	}
-	?>
 	<div id="main" class="container">
+		<?php
+		if(isset($invalid) && $invalid === True){
+			echo '<div class="error">Sign Up failed, username may be taken</div>';
+		}
+		?>
 		<form action="signup.php" method="post">
 			<div><label>Username<br /><input type="text" name="username" size="24"></label></div>
 			<div><label>Password<br /><input type="text" name="password" size="24"></label></div>

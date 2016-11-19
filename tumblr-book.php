@@ -24,11 +24,9 @@
 			
 			if($blog && $blog['content'] !== ''){
 				echo '<div id="fromTumblr">';
-				//echo $_GET['blog'];
-				//print_r($blog);
 				echo $blog['content'];
 				echo '</div><button id="printButton">Print this Tumblr blog</button>';
-				echo '<script>document.getElementById("printButton").onclick = function() { window.print(); };</script>';
+				echo '<script>var printButton = document.getElementById("printButton"); printButton.onclick = function() {  printButton.style.display = "none"; window.print(); printButton.style.display = "block";};</script>';
 			}else{
 				$contentNotFound = True;
 			}
