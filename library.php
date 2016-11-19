@@ -65,17 +65,23 @@
 					}
 					
 					echo '<div class="library-entry"><a href="tumblr-book.php?blog='.$blog['blogname'].'&cached=true">';
-					echo '<img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" /><br/>';
-					echo $blog['blogname'].'</a><div class="updated">(Last Updated on '.$blog['updated'].')</div>';
-					echo '<div class="more"><a href="tumblr-book.php?blog='.$blog['blogname'].'">Get Latest Version</a>';
+					echo '<img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" />';
+					echo '<div class="blogname">'.$blog['blogname'].'</div></a>';
+					echo '<div class="more">';
+					echo '<div class="info"><div>Last Updated on '.$blog['updated'].'</div>';
+					echo '<a href="tumblr-book.php?blog='.$blog['blogname'].'">Get Latest Version</a></div>';
 					if(count($users) !== 0){
-						echo '<div>Other Users Who Saved this Blog</div><ul>';
+						echo '<div class="info"><div>Other Users Who Saved this Blog</div><ul>';
 						foreach($users as $other_user){
 							echo '<li><a href="library.php?user='.$other_user['username'].'">'.$other_user['username'].'</a></li>';
 						}
-						echo '</ul>';
+						echo '</ul></div>';
 					}
-					echo '</div><div class="slide-control">More Info</div></div>';
+					echo '</div><div class="slide-control">More Info</div>';
+					if($my_library){
+						echo '<div class="library-remove">x</div>';
+					}
+					echo '</div>';
 				}
 			}
 

@@ -38,17 +38,18 @@ form div {
 	top: 5px;
 	right: 5px;
 }
-.library-entry, .more {
+.library-entry {
+	position: relative;
 	border: 1px solid grey;
 	margin-bottom: 5px;
 	padding: 5px;
 }
-.more>div {
-	text-decoration: underline;
+.library-entry img {
+	width: 96px;
+	height: 96px;
 }
-.updated {
-	font-size: 10pt;
-	color: grey;
+.info {
+	margin: .75em 0 .75em 0;
 }
 .slide-control {
 	font-size: 10pt;
@@ -56,6 +57,16 @@ form div {
 }
 .slide-control:hover {
 	text-decoration: underline;
+	cursor: pointer;
+}
+.library-remove {
+	position: absolute;
+	font-size: 18px;
+	color: grey;
+	top: -5px;
+	right: 5px;
+}
+.library-remove:hover {
 	cursor: pointer;
 }
 h1 a, h1 a:visited, h1 a:hover, h1 a:active {
