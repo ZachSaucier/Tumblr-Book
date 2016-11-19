@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width">
   <title>Tumblr Book</title>
 
-  <link rel="stylesheet" href="style.css">
+  <?php
+  if(isset($_GET['theme']) && $_GET['theme'] !== ''){
+	echo '<link rel="stylesheet" href="'.strtolower($_GET['theme']).'.css">';
+  }else{
+	echo '<link rel="stylesheet" href="style.css">';
+  }
+  ?>
 </head>
 <body>
   <?php

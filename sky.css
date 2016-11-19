@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Palanquin+Dark');
+
+body {
+	font-family: 'Palanquin Dark', sans-serif;
+}
+
+#fromTumblr {
+    width: 10in;
+    margin: 0 auto;
+    min-height: 10in;
+    background: #7fb0ff;
+	border-radius: 25px;
+    text-align: center;
+    display: block;
+    position: relative;
+    padding-top: 1in;
+    padding-bottom: 0.2in;
+}
+
+#avatar {
+    position: absolute;
+    top: .3in;
+    left: .5in;
+	border: 5px solid white;
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: white;
+    font-weight: normal;
+	text-shadow: 3px 3px black;
+}
+
+#blogName {
+    font-size: 22pt;
+    width: 100%;
+    position: absolute;
+    top: 0.2in;
+    text-align: center;
+	letter-spacing: 15px;
+}
+
+.post {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 17pt;
+    background: white;
+	border-radius: 25px;
+    padding: 0.3in;
+    margin: 0.2in;
+    text-align: center;
+	box-shadow: 2px 2px 8px black;
+}
+
+.post p {
+    text-align: left;
+    font-size: 12pt;
+}
+
+.post p img {
+    display: block;
+    margin: 0.1in auto;
+}
+
+.text {
+    font-size: 16pt;
+    page-break-inside: avoid;
+}
+
+.audio {
+    width: 5.3in;
+}
+
+.video {}
+
+.photo {
+    page-break-inside: avoid;
+}
+
+.chat {
+    text-align: left;
+}
+
+.chat br {
+    display: block;
+    height: 8px;
+    content: "";
+}
+
+.link {}
+
+.quote {
+    font-weight: italic;
+}
+
+.quoteAuthor {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.chatTitle {
+    font-size: 14pt;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+.chatName {
+    font-weight: bold;
+}
+
+.big {
+    width: auto;
+    display: block;
+}
+
+img {
+    page-break-inside: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+#printButton {
+    cursor: pointer;
+}

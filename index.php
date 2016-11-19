@@ -16,7 +16,8 @@
 			<input type="text" name="blog" placeholder="solacingsavant" ></div>
 			<div><label>Book Theme</label><br />
 			<select name="theme">
-				<option>Default</option>
+				<option value="style">Default</option>
+				<option>Sky</option>
 			</select>
 			</div>
 			<input type="submit" value="Create">
