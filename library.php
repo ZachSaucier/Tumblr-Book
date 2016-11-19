@@ -13,22 +13,31 @@
 	<div id="main" class="container">
 	<?php
 	session_start();
+	$my_library = False;
 	if(isset($_GET['user'])){
 		$user = $_GET['user'];
+		if(isset($_SESSION['username']) && $user === $_SESSION['username']){
+			$my_library = True;
+		}
 	}else if(isset($_SESSION['username'])){
 		$user = $_SESSION['username'];
+		$my_library = True;
 	}else{
 		echo '<div>You must be logged in to view your library</div>';
 	}
 	if(isset($user)){
-		echo '<h2>'.$user.'\'s Library</h2>';
+		if($my_library){
+			echo '<h2>Your Library</h2>';
+		}else{
+			echo '<h2>'.$user.'\'s Library</h2>';
+		}
 		
 		require('db.php');
 		try {
 
 			$pdo = db_connect();
 
-			$sql = 'SELECT b.blogname, b.updated FROM blogs b, userblogs ub WHERE ub.username=:username AND ub.blogname=b.blogname ORDER BY b.updated DESC;';
+			$sql = 'SELECT b.blogname, b.updated FROM blogs b, userblogs ub WHERE ub.username=:username AND ub.blogname=b.blogname';
 
 			$q = $pdo->prepare($sql);
 
@@ -40,7 +49,33 @@
 				echo '<div>'.$user.'\'s library is empty.</div>';
 			}else{
 				foreach($blogs as $blog){
-					echo '<div class="library-entry"><a href="tumblr-book.php?blog='.$blog['blogname'].'"><img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" /><br/>'.$blog['blogname'].'</a><br/><span class="updated">(Last Updated on '.$blog['updated'].')</span></div>';
+					
+					$sql = 'SELECT username FROM userblogs WHERE blogname=:blogname;';
+
+					$q = $pdo->prepare($sql);
+
+					$q->execute([':blogname' => $blog['blogname']]);
+
+					$users = $q->fetchAll(PDO::FETCH_ASSOC);
+					
+					for($i = 0; $i < count($users); $i++){
+						if($users[$i]['username'] === $user){
+							unset($users[$i]);
+						}
+					}
+					
+					echo '<div class="library-entry"><a href="tumblr-book.php?blog='.$blog['blogname'].'&cached=true">';
+					echo '<img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" /><br/>';
+					echo $blog['blogname'].'</a><div class="updated">(Last Updated on '.$blog['updated'].')</div>';
+					echo '<div class="more"><a href="tumblr-book.php?blog='.$blog['blogname'].'">Get Latest Version</a>';
+					if(count($users) !== 0){
+						echo '<div>Other Users Who Saved this Blog</div><ul>';
+						foreach($users as $other_user){
+							echo '<li><a href="library.php?user='.$other_user['username'].'">'.$other_user['username'].'</a></li>';
+						}
+						echo '</ul>';
+					}
+					echo '</div><div class="slide-control">More Info</div></div>';
 				}
 			}
 
@@ -55,11 +90,14 @@
 		<?php
 		if(isset($_SESSION['username'])){
 			echo 'Logged in as ' . $_SESSION['username'];
+			echo ' | <a href="library.php">My Library</a>';
 			echo ' | <a href="logout.php">Logout</a>';
 		}else{
 			echo '<a href="login.php">Login</a> | <a href="signup.php">Sign Up</a>';
 		}
 		?>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="library.js"></script>
 </body>
 </html>
