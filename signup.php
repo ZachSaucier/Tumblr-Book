@@ -14,7 +14,7 @@
 		
 		$pdo = db_connect();
 		
-		$sql = 'INSERT INTO users VALUES (:username, :password);';
+		$sql = 'INSERT INTO users (username, password) VALUES (:username, :password);';
 		
 		$q = $pdo->prepare($sql);
 		

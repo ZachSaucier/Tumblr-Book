@@ -45,6 +45,9 @@ form div {
 	top: 5px;
 	right: 5px;
 }
+#blogs {
+	margin-top: 15px;
+}
 .library-entry, .comment {
 	position: relative;
 	border: 1px solid grey;
@@ -64,11 +67,11 @@ form div {
 .comment-date {
 	margin-left: 8px; 
 }
-.slide-control, .comment-date {
+.slide-control, .comment-date, #open-edit {
 	font-size: 10pt;
 	color: grey;
 }
-.slide-control:hover {
+.slide-control:hover, #open-edit:hover {
 	text-decoration: underline;
 	cursor: pointer;
 }

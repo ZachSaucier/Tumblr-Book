@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users(
 	username VARCHAR(255) UNIQUE NOT NULL,
 	password VARCHAR(255) NOT NULL,
+	libraryheader TEXT,
 	PRIMARY KEY(username)
 );
 
@@ -21,6 +22,7 @@ CREATE TABLE userblogs(
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR(255) NOT NULL,
 	blogname VARCHAR(255) NOT NULL,
+	theme VARCHAR(255) NOT NULL,
 	UNIQUE KEY(username, blogname)
 );
 
@@ -34,6 +36,7 @@ CREATE TABLE librarycomments(
 );
 
 /* some test entries */
-INSERT INTO users VALUES ('mattling', 'password');
+INSERT INTO users (username, password) VALUES ('mattling', 'mysupersecrettumblrbookpassword');
 INSERT INTO blogs VALUES ('solacingsavant', 'some content', 'November 14, 2016'), ('gocookyourself', 'recipes', 'November 14, 2016'), ('thirdblog', 'more content', 'November 14, 2016');
-INSERT INTO userblogs (username, blogname) VALUES ('mattling', 'solacingsavant'), ('mattling', 'gocookyourself');
+INSERT INTO userblogs (username, blogname, theme) VALUES ('mattling', 'solacingsavant', 'style'), ('mattling', 'gocookyourself', 'sky');
+INSERT INTO librarycomments (library, username, created, content) VALUES ('mattling', 'test', 'November 15, 2016', 'Sweet library, dude.'), ('mattling', 'test', 'November 16, 2016', 'Oh wait, wrong library... lol');

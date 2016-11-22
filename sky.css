@@ -28,12 +28,12 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: white;
     font-weight: normal;
-	text-shadow: 3px 3px black;
 }
 
 #blogName {
+	color: white;
+	text-shadow: 3px 3px black;
     font-size: 22pt;
     width: 100%;
     position: absolute;

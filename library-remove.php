@@ -13,7 +13,7 @@ if(isset($_SESSION['username']) && isset($_POST['blogname'])){
 		$success = $q->execute([':username' => $_SESSION['username'], ':blogname' => $_POST['blogname']]);
 
 		if($success){
-			echo 'user-blog relationship deleted succesfully';
+			echo 'user-blog relationship deleted successfully';
 		}else{
 			echo 'error deleting user-blog relationship';
 		}

@@ -20,11 +20,11 @@ if(isset($_POST['blogname']) && isset($_POST['content'])){
 			session_start();
 			if(isset($_SESSION['username'])){
 				
-				$sql = 'INSERT INTO userblogs(username, blogname) VALUES (:username, :blogname);';
+				$sql = 'INSERT INTO userblogs (username, blogname, theme) VALUES (:username, :blogname, :theme);';
 
 				$q = $pdo->prepare($sql);
 
-				$success = $q->execute([':username' => $_SESSION['username'], ':blogname' => $_POST['blogname']]);
+				$success = $q->execute([':username' => $_SESSION['username'], ':blogname' => $_POST['blogname'], ':theme' => $_POST['theme']]);
 				
 				if($success){
 					echo "\nuser-blog relationship stored";

@@ -16,7 +16,7 @@ if(isset($_POST['library']) && isset($_SESSION['username']) && isset($_POST['con
 		$success = $q->execute([':library' => $_POST['library'], ':username' => $_SESSION['username'], ':created' => $date, ':content' => $_POST['content']]);
 
 		if($success){
-			echo 'library comment stored succesfully';
+			echo 'library comment stored successfully';
 		}else{
 			echo 'error storing library content';
 		}

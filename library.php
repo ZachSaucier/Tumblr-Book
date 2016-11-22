@@ -36,8 +36,25 @@
 		try {
 
 			$pdo = db_connect();
+			
+			$sql = 'SELECT libraryheader FROM users WHERE username=:username';
 
-			$sql = 'SELECT b.blogname, b.updated FROM blogs b, userblogs ub WHERE ub.username=:username AND ub.blogname=b.blogname';
+			$q = $pdo->prepare($sql);
+
+			$q->execute([':username' => $user]);
+
+			$result = $q->fetch(PDO::FETCH_ASSOC);
+			$header = $result['libraryheader'];
+			
+			echo '<div id="header">'.$header.'</div>';
+			if($my_library){
+				echo '<div id="edit-header">';
+				echo '<textarea id="header-changes" placeholder="Add a description to your library!">'.$header.'</textarea>';
+				echo '<button id="save">Save</button><button id="cancel">Cancel</button></div>';
+				echo '<div id="open-edit">Edit Description</div>';
+			}
+			
+			$sql = 'SELECT b.blogname, b.updated, ub.theme FROM blogs b, userblogs ub WHERE ub.username=:username AND ub.blogname=b.blogname';
 
 			$q = $pdo->prepare($sql);
 
@@ -46,8 +63,12 @@
 			$blogs = $q->fetchAll(PDO::FETCH_ASSOC);
 			
 			if(count($blogs) === 0){
+				if((isset($header) && $header !== '')|| $my_library){
+					echo '<br />';
+				}
 				echo '<div>'.$user.'\'s library is empty.</div>';
 			}else{
+				echo '<div id="blogs">';
 				foreach($blogs as $blog){
 					
 					$sql = 'SELECT username FROM userblogs WHERE blogname=:blogname;';
@@ -64,12 +85,13 @@
 						}
 					}
 					
-					echo '<div class="library-entry"><a href="tumblr-book.php?blog='.$blog['blogname'].'&cached=true">';
+					echo '<div class="library-entry"><a href="tumblr-book.php?blog='.$blog['blogname'].'&theme='.$blog['theme'].'&cached=true">';
 					echo '<img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" />';
 					echo '<div class="blogname">'.$blog['blogname'].'</div></a>';
 					echo '<div class="more">';
+					echo '<div class="info">Selected Theme: '.$blog['theme'].'</div>';
 					echo '<div class="info"><div>Last Updated on '.$blog['updated'].'</div>';
-					echo '<a href="tumblr-book.php?blog='.$blog['blogname'].'">Get Latest Version</a></div>';
+					echo '<a href="tumblr-book.php?blog='.$blog['blogname'].'&theme='.$blog['theme'].'">Get Latest Version</a></div>';
 					if(count($users) !== 0){
 						echo '<div class="info"><div>Other Users Who Saved this Blog</div><ul>';
 						foreach($users as $other_user){
@@ -83,26 +105,27 @@
 					}
 					echo '</div>';
 				}
-				
-				echo '<br/><h2>Comments</h2>';
-				echo '<div id="comments">';
-				
-				$sql = 'SELECT username, created, content FROM librarycomments WHERE library=:username';
-
-				$q = $pdo->prepare($sql);
-
-				$q->execute([':username' => $user]);
-
-				$comments = $q->fetchAll(PDO::FETCH_ASSOC);
-				
-				foreach($comments as $comment){
-					echo '<div class="comment"><div><a href="library.php?user='.$comment['username'].'">'.$comment['username'].'</a> <span class="comment-date">'.$comment['created'].'</span></div><div>'.$comment['content'].'</div></div>';	
-				}
 				echo '</div>';
-				//if(!$my_library){
+			}
+				
+			echo '<br/><h2>Comments</h2>';
+			echo '<div id="comments">';
+			
+			$sql = 'SELECT username, created, content FROM librarycomments WHERE library=:username ORDER BY id';
+
+			$q = $pdo->prepare($sql);
+
+			$q->execute([':username' => $user]);
+
+			$comments = $q->fetchAll(PDO::FETCH_ASSOC);
+			
+			foreach($comments as $comment){
+				echo '<div class="comment"><div><a href="library.php?user='.$comment['username'].'">'.$comment['username'].'</a> <span class="comment-date">'.$comment['created'].'</span></div><div>'.$comment['content'].'</div></div>';	
+			}
+			echo '</div>';
+			if(!$my_library){
 				echo '<textarea id="new-comment" placeholder="Leave a comment on '.$user.'\'s library..."></textarea>';
 				echo '<button id="post-comment">Post Comment</button>';
-				//}
 			}
 
 		}catch(PDOException $e){
@@ -127,7 +150,14 @@
 		<?php
 		if(isset($_SESSION['username'])){
 			echo 'var username="'.$_SESSION['username'].'";';
+		}
+		if(isset($user)){
 			echo 'var library="'.$user.'";';
+		}
+		if($my_library){
+			echo 'var myLibrary = true;';
+		}else{
+			echo 'var myLibrary = false;';
 		}
 		?>
 	</script>

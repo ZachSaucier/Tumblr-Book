@@ -2,6 +2,49 @@ var months = ['January','February','March','April','May','June','July','August',
 var date = new Date();
 date = months[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear();
 
+if(myLibrary){
+	var header = $('#header').text();
+	if(header === ''){
+		$('#open-edit').hide();
+		$('#header').hide();
+	}else{
+		$('#edit-header').hide();
+	}
+	$('#open-edit').click(function(){
+		$('#edit-header').show();
+		$('#open-edit').hide();
+		$('#header').hide();
+	});
+	$('#save').click(function(){
+		$('#header').text($('#header-changes').val());
+		if($('#header').text() !== ''){
+			$('#edit-header').hide();
+			$('#open-edit').show();
+			$('#header').show();
+		}
+		$.ajax({
+			type: 'POST',
+			url: 'library-header.php',
+			data: {header: $('#header').text()},
+			success: function(resp){
+				console.log('header update sent to the database');
+				console.log(resp);
+			},
+			error: function(){
+				console.log('error updating header in database');
+			}
+		});
+	});
+	$('#cancel').click(function(){
+		$('#header-changes').val($('#header').text());
+		if($('#header').text() !== ''){
+			$('#edit-header').hide();
+			$('#open-edit').show();
+			$('#header').show();
+		}
+	});
+}
+
 $('.library-entry').each(function(){
 	var entry = $(this);
 	var blogname = entry.find('.blogname').text();
@@ -37,6 +80,7 @@ $('.library-entry').each(function(){
 		}
 	});
 });
+
 $('#post-comment').click(function(){
 	var newComment = $('<div class="comment">');
 	var content = $('#new-comment').val();

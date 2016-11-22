@@ -70,7 +70,7 @@ window.filter = function filter (data) {
 	$.ajax({
 		type: 'POST',
 		url: 'blog-data.php',
-		data: {blogname: blogname, content: ft.innerHTML},
+		data: {blogname: blogname, theme: theme, content: ft.innerHTML},
 		success: function(resp){
 			console.log('blog content sent to the database');
 			console.log(resp);
