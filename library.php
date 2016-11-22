@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="pages.css">
 </head>
 <body>
-	<h1><a href="index.php">TumblrBook<a></h1>
+	<h1><a href="index.php">TumblrBook</a></h1>
 	<h3>Turn any Tumblr blog into a printable book</h3>
 	<div id="main" class="container">
 	<?php
@@ -83,6 +83,26 @@
 					}
 					echo '</div>';
 				}
+				
+				echo '<br/><h2>Comments</h2>';
+				echo '<div id="comments">';
+				
+				$sql = 'SELECT username, created, content FROM librarycomments WHERE library=:username';
+
+				$q = $pdo->prepare($sql);
+
+				$q->execute([':username' => $user]);
+
+				$comments = $q->fetchAll(PDO::FETCH_ASSOC);
+				
+				foreach($comments as $comment){
+					echo '<div class="comment"><div><a href="library.php?user='.$comment['username'].'">'.$comment['username'].'</a> <span class="comment-date">'.$comment['created'].'</span></div><div>'.$comment['content'].'</div></div>';	
+				}
+				echo '</div>';
+				//if(!$my_library){
+				echo '<textarea id="new-comment" placeholder="Leave a comment on '.$user.'\'s library..."></textarea>';
+				echo '<button id="post-comment">Post Comment</button>';
+				//}
 			}
 
 		}catch(PDOException $e){
@@ -103,6 +123,14 @@
 		}
 		?>
 	</div>
+	<script>
+		<?php
+		if(isset($_SESSION['username'])){
+			echo 'var username="'.$_SESSION['username'].'";';
+			echo 'var library="'.$user.'";';
+		}
+		?>
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="library.js"></script>
 </body>

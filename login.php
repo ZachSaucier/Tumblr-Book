@@ -42,7 +42,7 @@
   
 </head>
 <body>
-	<h1><a href="index.php">TumblrBook<a></h1>
+	<h1><a href="index.php">TumblrBook</a></h1>
 	<h3>Turn any Tumblr blog into a printable book</h3>
 	<div id="main" class="container">
 		<?php

@@ -24,6 +24,15 @@ CREATE TABLE userblogs(
 	UNIQUE KEY(username, blogname)
 );
 
+DROP TABLE IF EXISTS librarycomments;
+CREATE TABLE librarycomments(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	library VARCHAR(255) NOT NULL,
+	username VARCHAR(255) NOT NULL,
+	created VARCHAR(255) NOT NULL,
+	content TEXT NOT NULL
+);
+
 /* some test entries */
 INSERT INTO users VALUES ('mattling', 'password');
 INSERT INTO blogs VALUES ('solacingsavant', 'some content', 'November 14, 2016'), ('gocookyourself', 'recipes', 'November 14, 2016'), ('thirdblog', 'more content', 'November 14, 2016');

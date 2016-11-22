@@ -30,6 +30,13 @@ h3 {
 [type=text], [type=password], select {
 	width: 135px;
 }
+/*
+[type=submit], button {
+	background-color: #7fb0ff;
+	border-radius: 5px;
+	padding: 2px;
+}
+*/
 form div {
 	margin-bottom: 10px;
 }
@@ -38,11 +45,11 @@ form div {
 	top: 5px;
 	right: 5px;
 }
-.library-entry {
+.library-entry, .comment {
 	position: relative;
 	border: 1px solid grey;
 	margin-bottom: 5px;
-	padding: 5px;
+	padding: 10px;
 }
 .library-entry img {
 	width: 96px;
@@ -51,7 +58,13 @@ form div {
 .info {
 	margin: .75em 0 .75em 0;
 }
-.slide-control {
+.comment {
+	text-align: left;
+}
+.comment-date {
+	margin-left: 8px; 
+}
+.slide-control, .comment-date {
 	font-size: 10pt;
 	color: grey;
 }
@@ -69,6 +82,12 @@ form div {
 .library-remove:hover {
 	cursor: pointer;
 }
+a, a:visited, a:active {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
 h1 a, h1 a:visited, h1 a:hover, h1 a:active {
   color: inherit;
   text-decoration: none;
@@ -76,6 +95,13 @@ h1 a, h1 a:visited, h1 a:hover, h1 a:active {
 ul {
 	padding: 0px;
 	margin: 0px;
+}
+textarea {
+	box-sizing: border-box;
+	resize: none;
+    font-family: 'Source Sans Pro', sans-serif;
+	width: 100%;
+	padding: 10px;
 }
 .error {
     color: red;
