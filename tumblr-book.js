@@ -6,14 +6,37 @@ var script = document.createElement('script'),
     useBigVideo = false,
     maxNumPhotosPerPost = 999,
 //  `siteURL` and `theme` declarations are in tumblr-book.php
-    domain = getDomain(siteURL);
+    domain = getDomain(siteURL),
+    siteLoaded = false;
 
+// Catch failed loads of Tumblr blogs
+script.onload = function() {
+    siteLoaded = true;
+}
+setTimeout(function() {
+    // Blog failed to load, so send user back to index with error
+    if(!siteLoaded) {
+        alert("The Tumblr blog " + domain + " failed to load. Please check the name and try again.");
+        window.location = "/index.php";
+    }
+}, 1000);
 script.src = 'https://api.tumblr.com/v2/blog/' + domain + '/posts?api_key=Srhk9qkcJO69pAoB4ltM5uIqpwUBO7kgDqDEaCD9Jo8EafWyHE&limit=' + limit + '&offset=' + offset + '&callback=filter';
 // offset += limit;
 // Do it again
 indentedAppend(document.getElementsByTagName('head')[0], script);
 
 window.filter = function filter (data) {
+    var homeButton = document.createElement('a');
+    homeButton.id = "home";
+    homeButton.href = "/index.php";
+
+    // var logo = document.createElement("img");
+    // logo.id = "logo";
+    // logo.src = "icon.jpg";
+
+    homeButton.innerText = "Home";
+    indentedAppend(document.body, homeButton);
+
     var printButton = document.createElement('button');
     printButton.id = "printButton";
     printButton.innerText = "Print this Tumblr blog";
@@ -107,6 +130,9 @@ function stripPhoto(post) {
             if(charCount >= longCharMin) {
                 toAdd.className += " big";
                 imgURL = post.photos[i].alt_sizes[1].url;
+            }
+            if(theme === "Album") {
+                imgURL = post.photos[i].alt_sizes[0].url;
             }
             toAdd.innerHTML += '<img src="' + imgURL + '"/><br/>';
         }

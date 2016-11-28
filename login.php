@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+  <link href="/images/favicon.png" rel="icon">
   <title>Tumblr Book - Login</title>
 
   <link rel="stylesheet" href="pages.css">
@@ -42,7 +43,7 @@
   
 </head>
 <body>
-	<h1><a href="index.php">TumblrBook</a></h1>
+	<h1><a href="index.php"><img class="icon" src="/images/icon.png"/>TumblrBook</a></h1>
 	<h3>Turn any Tumblr blog into a printable book</h3>
 	<div id="main" class="container">
 		<?php

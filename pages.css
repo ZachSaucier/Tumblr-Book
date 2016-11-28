@@ -117,3 +117,9 @@ textarea {
     color: red;
     font-weight: bold;
 }
+
+.icon {
+	position: relative;
+    margin-right: 10px;
+    top: 10px;
+}

@@ -119,4 +119,14 @@ img {
 
 #printButton {
     cursor: pointer;
+    color: black;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+#home {
+    position: fixed;
+    top:37px;
+    left: 10px;
 }

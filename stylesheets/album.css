@@ -44,7 +44,6 @@ button {
     padding:.3in;
     margin:.2in;
     text-align:center;
-    width:3.25in;
 }
 .post p {
     text-align:left;
@@ -103,6 +102,7 @@ button {
 }
 img {
     page-break-inside:inherit;
+    max-width: 100%;
 }
 .hidden {
     display:none;
@@ -110,4 +110,18 @@ img {
 .error {
 	color: red;
 	font-weight: bold;
+}
+
+#printButton {
+    cursor: pointer;
+    color: black;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+#home {
+    position: fixed;
+    top:37px;
+    left: 10px;
 }
