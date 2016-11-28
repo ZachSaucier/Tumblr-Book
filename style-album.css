@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+#downloader {
+    font-family: KnockLight, sans-serif;
+}
+button {
+    border: 2px solid black;
+    color: white;
+}
+#fromTumblr {
+    width:8.5in;
+    min-height:10in;
+    /*background:#E9CFB4;*/
+    border-style: solid;
+    border-width: 5px;
+    display:block;
+    position:relative;
+    padding-top:1in;
+    padding-bottom:0.2in;
+    margin:0 auto;
+}
+#avatar { 
+    position:absolute;
+    top:.3in; left:.5in;
+}
+#blogName {
+    font-family: KnockLight, sans-serif;
+    width:4in;
+    height:1in;
+    font-size:22pt;
+    position:absolute;
+    top:0.4in;
+    left:4.25in;
+    margin-left:-2in;
+    text-align:center;
+    font-variant: small-caps;
+}
+.post {
+    font-family: KnockLight, sans-serif;
+    line-height:17pt;
+    float:left;
+    /*background:#F8ECC2;*/
+    border-style: double;
+    border-width: 6px;
+    padding:.3in;
+    margin:.2in;
+    text-align:center;
+    width:3.25in;
+}
+.post p {
+    text-align:left;
+    font-size:12pt;
+    display:none;
+}
+.post p img {
+    display:block;
+    margin: 0.1in auto;
+}
+.text {
+    font-size:16pt;
+    page-break-inside:avoid;
+}
+.audio {
+    width:5.3in;
+}
+.video {
+    
+}
+.photo {
+    page-break-inside:avoid;
+}
+.chat {
+    text-align:left;
+}
+.chat br {
+    display: block;
+    height: 8px;
+    content: "";
+}
+.link {
+    
+}
+.quote {
+    font-weight:italic;
+}
+.quoteAuthor {
+    font-size:14pt;
+    font-weight:bold;
+}
+.chatTitle {
+    font-size:14pt;
+    font-weight:bold;
+    display:block;
+    text-align:center;
+}
+.chatName {
+    font-weight:bold;
+}
+.big {
+    clear:both;
+    float:none;
+    width:auto;
+    display:block;
+}
+img {
+    page-break-inside:inherit;
+}
+.hidden {
+    display:none;
+}
+.error {
+	color: red;
+	font-weight: bold;
+}
