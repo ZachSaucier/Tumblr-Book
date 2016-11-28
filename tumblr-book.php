@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="/images/favicon.png" rel="icon">
+  <link href="images/favicon.png" rel="icon">
   <title>Tumblr Book</title>
 
   <?php
   if(isset($_GET['theme']) && $_GET['theme'] !== ''){
-	echo '<link rel="stylesheet" href="/stylesheets/'.strtolower($_GET['theme']).'.css">';
+	echo '<link rel="stylesheet" href="stylesheets/'.strtolower($_GET['theme']).'.css">';
   }else{
-	echo '<link rel="stylesheet" href="/stylesheets/style.css">';
+	echo '<link rel="stylesheet" href="stylesheets/style.css">';
   }
   ?>
 </head>
@@ -33,7 +33,7 @@
 				echo '<div id="fromTumblr">';
 				echo $blog['content'];
 				echo '</div>';
-				echo '<a id="home" href="/index.php"><img src="icon.jpg"/>Home</a>';
+				echo '<a id="home" href="index.php"><img src="images/icon.jpg"/>Home</a>';
 				echo '<button id="printButton">Print this Tumblr blog</button>';
 				echo '<script>var printButton = document.getElementById("printButton"); printButton.onclick = function() {  printButton.style.display = "none"; window.print(); printButton.style.display = "block";};</script>';
 			}else{

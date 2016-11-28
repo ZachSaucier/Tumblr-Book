@@ -103,11 +103,35 @@ $('.library-entry').each(function(){
 	}
 });
 
+$('.comment').each(function(){
+	var comment = $(this);
+	var remove = comment.find('.comment-remove');
+	var id = comment.attr('id');
+	remove.click(function(){
+		if(confirm('Remove this comment?')){
+			comment.slideUp();
+			$.ajax({
+				type: 'POST',
+				url: 'library-comment-remove.php',
+				data: {id: id},
+				success: function(resp){
+					console.log('remove request sent to the database');
+					console.log(resp);
+				},
+				error: function(){
+					console.log('error on database delete query');
+				}
+			});	
+		}
+	});
+});
+
 $('#post-comment').click(function(){
 	var newComment = $('<div class="comment">');
 	var content = $('#new-comment').val();
 	newComment.html('<div><a href="library.php?user='+username+'">'+username+'</a> <span class="comment-date">'+date+'</span></div><div>'+content+'</div>');
 	newComment.hide();
+	
 	$('#comments').append(newComment);
 	newComment.slideDown();
 	$('#new-comment').val('');
@@ -118,9 +142,32 @@ $('#post-comment').click(function(){
 		success: function(resp){
 			console.log('comment sent to the database');
 			console.log(resp);
+			var id = resp.substr(0, resp.indexOf(':'));
+			newComment.attr('id', id);
 		},
 		error: function(){
 			console.log('error saving comment to database');
 		}
 	});
+	
+	var remove = $('<div class="comment-remove">x</div>');
+	newComment.append(remove);
+	remove.click(function(){
+		if(confirm('Remove this comment?')){
+			newComment.slideUp();
+			$.ajax({
+				type: 'POST',
+				url: 'library-comment-remove.php',
+				data: {id: newComment.attr('id')},
+				success: function(resp){
+					console.log('remove request sent to the database');
+					console.log(resp);
+				},
+				error: function(){
+					console.log('error on database delete query');
+				}
+			});	
+		}
+	});
+	
 });

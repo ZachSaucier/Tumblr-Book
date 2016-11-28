@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="/images/favicon.png" rel="icon">
+  <link href="images/favicon.png" rel="icon">
   <title>Tumblr Book</title>
 
   <link rel="stylesheet" href="pages.css">
 </head>
 <body>
-	<h1><a href="index.php"><img class="icon" src="/images/icon.png"/>TumblrBook</a></h1>
+	<h1><a href="index.php"><img class="icon" src="images/icon.png"/>TumblrBook</a></h1>
 	<h3>Turn any Tumblr blog into a printable book</h3>
 	<div id="main" class="container">
 		<form action="tumblr-book.php" method="get">
@@ -20,6 +20,7 @@
 				<option value="style">Default</option>
 				<option>Sky</option>
 				<option>Album</option>
+				<option>Corkboard</option>
 			</select>
 			</div>
 			<input type="submit" value="Create">

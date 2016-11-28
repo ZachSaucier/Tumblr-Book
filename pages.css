@@ -78,7 +78,7 @@ form div {
 	text-decoration: underline;
 	cursor: pointer;
 }
-.library-remove {
+.library-remove, .comment-remove {
 	position: absolute;
 	font-size: 18px;
 	color: grey;
@@ -89,7 +89,7 @@ form div {
 	font-size: 10pt;
 	color: grey;
 }
-.library-remove:hover {
+.library-remove:hover, .comment-remove:hover {
 	cursor: pointer;
 }
 a, a:visited, a:active {

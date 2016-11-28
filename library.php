@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="/images/favicon.png" rel="icon">
+  <link href="images/favicon.png" rel="icon">
   <title>Tumblr Book</title>
 
   <link rel="stylesheet" href="pages.css">
 </head>
 <body>
-	<h1><a href="index.php"><img class="icon" src="/images/icon.png"/>TumblrBook</a></h1>
+	<h1><a href="index.php"><img class="icon" src="images/icon.png"/>TumblrBook</a></h1>
 	<h3>Turn any Tumblr blog into a printable book</h3>
 	<div id="main" class="container">
 	<?php
@@ -144,7 +144,7 @@
 			echo '<h2>Comments</h2>';
 			echo '<div id="comments">';
 			
-			$sql = 'SELECT username, created, content FROM librarycomments WHERE library=:username ORDER BY id';
+			$sql = 'SELECT id, username, created, content FROM librarycomments WHERE library=:username ORDER BY id';
 
 			$q = $pdo->prepare($sql);
 
@@ -153,7 +153,13 @@
 			$comments = $q->fetchAll(PDO::FETCH_ASSOC);
 			
 			foreach($comments as $comment){
-				echo '<div class="comment"><div><a href="library.php?user='.$comment['username'].'">'.$comment['username'].'</a> <span class="comment-date">'.$comment['created'].'</span></div><div>'.$comment['content'].'</div></div>';	
+				echo '<div class="comment" id="'.$comment['id'].'">';
+				echo '<div><a href="library.php?user='.$comment['username'].'">'.$comment['username'].'</a> <span class="comment-date">'.$comment['created'].'</span></div>';
+				echo '<div>'.$comment['content'].'</div>';
+				if($my_library || (isset($_SESSION['username']) && $comment['username'] === $_SESSION['username']) ){
+					echo '<div class="comment-remove">x</div>';
+				}
+				echo '</div>';
 			}
 			echo '</div>';
 			if(!$my_library && isset($_SESSION['username'])){

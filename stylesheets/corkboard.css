@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Covered+By+Your+Grace');
+
+
+body {
+    font-family: 'Covered By Your Grace', sans-serif;
+}
+
+#fromTumblr {
+    width: 10in;
+    margin: 0 auto;
+    min-height: 10in;
+	background-image: url('../images/corkboard.jpg');
+	background-size: 507px 708px;
+    text-align: center;
+    display: block;
+    position: relative;
+    padding-top: 1in;
+    padding-bottom: 0.2in;
+}
+
+#avatar {
+    position: absolute;
+    top: .3in;
+    left: .5in;
+	background-color: white;
+	padding: 10px;
+	z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Covered By Your Grace', serif;
+    font-weight: normal;
+}
+
+#blogName {
+    font-size: 30pt;
+    width: 100%;
+    position: absolute;
+    top: 0.2in;
+    text-align: center;
+	background-color: white;
+	background-image: url('../images/paper.jpg');
+	background-size: 10in;
+}
+
+.post {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 17pt;
+    background: white;
+	background-image: url('../images/paper.jpg');
+	background-size: 9.5in;
+    padding: 0.3in;
+    margin: 0.2in;
+    text-align: center;
+	box-shadow: 3px 3px 3px;
+	font-size: 20pt;
+}
+
+.post p {
+    text-align: left;
+	padding-left: 1.25in;
+	padding-right: 1in;
+}
+
+.post img {
+	background-image: url('../images/scribble.png');
+	padding: 10px;
+}
+
+.post p img {
+    display: block;
+    margin: 0.1in auto;
+}
+
+.text {
+    page-break-inside: avoid;
+}
+
+.audio {
+    width: 5.3in;
+}
+
+.video {}
+
+.photo {
+    page-break-inside: avoid;
+}
+
+.chat {
+    text-align: left;
+}
+
+.chat br {
+    display: block;
+    height: 8px;
+    content: "";
+}
+
+.link {}
+
+.quote {
+    font-weight: italic;
+}
+
+.quoteAuthor {
+    font-weight: bold;
+}
+
+.chatTitle {
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+.chatName {
+    font-weight: bold;
+}
+
+.big {
+    width: auto;
+    display: block;
+}
+
+img {
+    page-break-inside: inherit;
+}
+
+.hidden {
+    display: none;
+}
+
+#printButton {
+    cursor: pointer;
+}

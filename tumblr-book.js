@@ -17,7 +17,7 @@ setTimeout(function() {
     // Blog failed to load, so send user back to index with error
     if(!siteLoaded) {
         alert("The Tumblr blog " + domain + " failed to load. Please check the name and try again.");
-        window.location = "/index.php";
+        window.location = "index.php";
     }
 }, 1000);
 script.src = 'https://api.tumblr.com/v2/blog/' + domain + '/posts?api_key=Srhk9qkcJO69pAoB4ltM5uIqpwUBO7kgDqDEaCD9Jo8EafWyHE&limit=' + limit + '&offset=' + offset + '&callback=filter';
@@ -28,7 +28,7 @@ indentedAppend(document.getElementsByTagName('head')[0], script);
 window.filter = function filter (data) {
     var homeButton = document.createElement('a');
     homeButton.id = "home";
-    homeButton.href = "/index.php";
+    homeButton.href = "index.php";
 
     // var logo = document.createElement("img");
     // logo.id = "logo";
