@@ -48,9 +48,11 @@ if(myLibrary){
 $('.library-entry').each(function(){
 	var entry = $(this);
 	var blogname = entry.find('.blogname').text();
+	var theme = entry.find('.theme').text();
 	var more = entry.find('.more');
 	var control = entry.find('.slide-control');
 	var remove = entry.find('.library-remove');
+	var add = entry.find('.library-add');
 	
 	more.hide();
 	control.click(function(){
@@ -79,6 +81,26 @@ $('.library-entry').each(function(){
 			});	
 		}
 	});
+	if(add.text() === 'Add to Library'){		
+		add.addClass('clickable-text');
+		add.click(function(){
+			add.text('In your Library');
+			add.removeClass('clickable-text');
+			add.off();
+			$.ajax({
+				type: 'POST',
+				url: 'library-add.php',
+				data: {blogname: blogname, theme: theme},
+				success: function(resp){
+					console.log('add request sent to the database');
+					console.log(resp);
+				},
+				error: function(){
+					console.log('error on database add query');
+				}
+			});
+		});
+	}
 });
 
 $('#post-comment').click(function(){

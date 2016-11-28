@@ -11,7 +11,10 @@ h1 {
 	margin: 5px;
 }
 h2 {
-	margin: 0px 0px 15px 0px;
+	margin: 20px 0px 10px 0px;
+}
+#library-name {
+	margin-top: 0px;
 }
 h3 {
 	margin-top: 0px;
@@ -48,7 +51,7 @@ form div {
 #blogs {
 	margin-top: 15px;
 }
-.library-entry, .comment {
+.library-entry, .comment, .similar-library {
 	position: relative;
 	border: 1px solid grey;
 	margin-bottom: 5px;
@@ -71,7 +74,7 @@ form div {
 	font-size: 10pt;
 	color: grey;
 }
-.slide-control:hover, #open-edit:hover {
+.clickable-text:hover {
 	text-decoration: underline;
 	cursor: pointer;
 }
@@ -81,6 +84,10 @@ form div {
 	color: grey;
 	top: -5px;
 	right: 5px;
+}
+.library-add {
+	font-size: 10pt;
+	color: grey;
 }
 .library-remove:hover {
 	cursor: pointer;
