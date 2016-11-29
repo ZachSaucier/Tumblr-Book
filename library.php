@@ -105,7 +105,7 @@
 						}
 					}
 					
-					echo '<div class="library-entry"><a href="tumblr-book.php?blog='.$blog['blogname'].'&theme='.$blog['theme'].'&cached=true">';
+					echo '<div class="library-entry light"><a href="tumblr-book.php?blog='.$blog['blogname'].'&theme='.$blog['theme'].'&cached=true">';
 					echo '<img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" />';
 					echo '<div class="blogname">'.$blog['blogname'].'</div></a>';
 					
@@ -154,6 +154,10 @@
 			$q->execute([':username' => $user]);
 
 			$comments = $q->fetchAll(PDO::FETCH_ASSOC);
+
+			if(count($comments) < 1) {
+				echo '<div class="comment">No comments to display</div>';
+			}
 			
 			foreach($comments as $comment){
 				echo '<div class="comment" id="'.$comment['id'].'">';
@@ -179,6 +183,12 @@
 			$q->execute([':username' => $user]);
 
 			$libraries = $q->fetchAll(PDO::FETCH_ASSOC);
+
+			echo '<div id="similar-libraries">';
+
+			if(count($libraries) < 1) {
+				echo '<div class="similar-library">No similar libraries to display</div>';
+			}
 			
 			for($i = 0; $i < 4 && $i < count($libraries); $i++){
 				$library = $libraries[$i];
@@ -191,6 +201,8 @@
 					}
 				}
 			}
+
+			echo '</div>';
 			
 		}catch(PDOException $e){
 			die("Could not connect to the database $dbname : " . $e->getMessage() );
@@ -200,7 +212,7 @@
 	?>
 	</div>
 	</div>
-	<div id="login" class="container">
+	<div id="login" class="container shadow light">
 		<?php
 		if(isset($_SESSION['username'])){
 			echo 'Logged in as ' . $_SESSION['username'];

@@ -33,7 +33,7 @@
 				echo '<div id="fromTumblr">';
 				echo $blog['content'];
 				echo '</div>';
-				echo '<a id="home" href="index.php"><img src="images/icon.jpg"/>Home</a>';
+				echo '<a id="home" href="index.php">Home</a>';
 				echo '<button id="printButton">Print this Tumblr blog</button>';
 				echo '<script>var printButton = document.getElementById("printButton"); printButton.onclick = function() {  printButton.style.display = "none"; window.print(); printButton.style.display = "block";};</script>';
 			}else{

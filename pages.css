@@ -27,9 +27,7 @@ h1 {
 	text-shadow: -5px -5px 0 #36465d, -5px -4px 0 #36465d, -5px -3px 0 #36465d, -5px -2px 0 #36465d, -5px -1px 0 #36465d, -5px 0px 0 #36465d, -5px 1px 0 #36465d, -5px 2px 0 #36465d, -5px 3px 0 #36465d, -5px 4px 0 #36465d, -5px 5px 0 #36465d, -4px -5px 0 #36465d, -4px -4px 0 #36465d, -4px -3px 0 #36465d, -4px -2px 0 #36465d, -4px -1px 0 #36465d, -4px 0px 0 #36465d, -4px 1px 0 #36465d, -4px 2px 0 #36465d, -4px 3px 0 #36465d, -4px 4px 0 #36465d, -4px 5px 0 #36465d, -3px -5px 0 #36465d, -3px -4px 0 #36465d, -3px -3px 0 #36465d, -3px -2px 0 #36465d, -3px -1px 0 #36465d, -3px 0px 0 #36465d, -3px 1px 0 #36465d, -3px 2px 0 #36465d, -3px 3px 0 #36465d, -3px 4px 0 #36465d, -3px 5px 0 #36465d, -2px -5px 0 #36465d, -2px -4px 0 #36465d, -2px -3px 0 #36465d, -2px -2px 0 #36465d, -2px -1px 0 #36465d, -2px 0px 0 #36465d, -2px 1px 0 #36465d, -2px 2px 0 #36465d, -2px 3px 0 #36465d, -2px 4px 0 #36465d, -2px 5px 0 #36465d, -1px -5px 0 #36465d, -1px -4px 0 #36465d, -1px -3px 0 #36465d, -1px -2px 0 #36465d, -1px -1px 0 #36465d, -1px 0px 0 #36465d, -1px 1px 0 #36465d, -1px 2px 0 #36465d, -1px 3px 0 #36465d, -1px 4px 0 #36465d, -1px 5px 0 #36465d, 0px -5px 0 #36465d, 0px -4px 0 #36465d, 0px -3px 0 #36465d, 0px -2px 0 #36465d, 0px -1px 0 #36465d, 0px 0px 0 #36465d, 0px 1px 0 #36465d, 0px 2px 0 #36465d, 0px 3px 0 #36465d, 0px 4px 0 #36465d, 0px 5px 0 #36465d, 1px -5px 0 #36465d, 1px -4px 0 #36465d, 1px -3px 0 #36465d, 1px -2px 0 #36465d, 1px -1px 0 #36465d, 1px 0px 0 #36465d, 1px 1px 0 #36465d, 1px 2px 0 #36465d, 1px 3px 0 #36465d, 1px 4px 0 #36465d, 1px 5px 0 #36465d, 2px -5px 0 #36465d, 2px -4px 0 #36465d, 2px -3px 0 #36465d, 2px -2px 0 #36465d, 2px -1px 0 #36465d, 2px 0px 0 #36465d, 2px 1px 0 #36465d, 2px 2px 0 #36465d, 2px 3px 0 #36465d, 2px 4px 0 #36465d, 2px 5px 0 #36465d, 3px -5px 0 #36465d, 3px -4px 0 #36465d, 3px -3px 0 #36465d, 3px -2px 0 #36465d, 3px -1px 0 #36465d, 3px 0px 0 #36465d, 3px 1px 0 #36465d, 3px 2px 0 #36465d, 3px 3px 0 #36465d, 3px 4px 0 #36465d, 3px 5px 0 #36465d, 4px -5px 0 #36465d, 4px -4px 0 #36465d, 4px -3px 0 #36465d, 4px -2px 0 #36465d, 4px -1px 0 #36465d, 4px 0px 0 #36465d, 4px 1px 0 #36465d, 4px 2px 0 #36465d, 4px 3px 0 #36465d, 4px 4px 0 #36465d, 4px 5px 0 #36465d, 5px -5px 0 #36465d, 5px -4px 0 #36465d, 5px -3px 0 #36465d, 5px -2px 0 #36465d, 5px -1px 0 #36465d, 5px 0px 0 #36465d, 5px 1px 0 #36465d, 5px 2px 0 #36465d, 5px 3px 0 #36465d, 5px 4px 0 #36465d, 5px 5px 0 #36465d;
 	margin: 5px;
 }
-h2 {
-	margin: 20px 0px 10px 0px;
-}
+
 #library-name {
 	margin-top: 0px;
 }
@@ -40,26 +38,27 @@ h3 {
 }
 .container {
 	padding: 10px;
-	max-width: 990px;
+	max-width: 790px;
 	margin: 0 auto;
 }
 .shadow {
 	box-shadow: 2px 2px 8px black;
 }
-.container.light {
+.light {
 	background-color: white;
 	color: black;
 }
 
 #main {
-	height: calc(100vh - 109px);
-	min-height: 202px;
+	min-height: calc(100vh - 109px);
 	background: #36465d;
 }
 
 
-label {
+label, h2 {
 	font-size: 1.5rem;
+	font-weight: normal;
+	margin: 0 0 5px 0;
 }
 [type="submit"] {
 	background-color: #5572a0;
@@ -81,7 +80,7 @@ label {
 	border-radius: 3px;
 }
 
-form {
+form, #library-name {
 	margin-top: 1.5rem;
 }
 form div {
@@ -94,6 +93,7 @@ form div {
 }
 #blogs {
 	margin-top: 15px;
+	margin-bottom: 30px;
 }
 .library-entry, .comment, .similar-library {
 	position: relative;
@@ -102,11 +102,23 @@ form div {
 	padding: 10px;
 }
 .library-entry img {
-	width: 96px;
-	height: 96px;
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 2px;
 }
+.library-entry::after {
+	content: '';
+	clear: both;
+	display: block;
+}
+
 .info {
 	margin: .75em 0 .75em 0;
+}
+#comments, #similar-libraries {
+	margin-bottom: 30px;
 }
 .comment {
 	text-align: left;
@@ -124,21 +136,23 @@ form div {
 }
 .library-remove, .comment-remove {
 	position: absolute;
-	font-size: 18px;
+	font-size: 30px;
 	color: grey;
 	top: -5px;
 	right: 5px;
+	cursor: pointer;
 }
 .library-add {
 	font-size: 10pt;
 	color: grey;
 }
-.library-remove:hover, .comment-remove:hover {
-	cursor: pointer;
+
+.light a, .light a:visited, .light a:active {
+	color: black;
 }
 a, a:visited, a:active {
 	text-decoration: none;
-	color: black;
+	color: #5572a0;
 }
 a:hover {
 	text-decoration: underline;
@@ -167,4 +181,19 @@ textarea {
 	position: relative;
     margin-right: 10px;
     top: 10px;
+}
+
+@media (max-width: 1120px) {
+	.heading-container h3 {
+		padding-bottom: 65px;
+	}
+	#login {
+		position: absolute;
+		top: 100px;
+		left: 50%;
+		right: auto;
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
 }
