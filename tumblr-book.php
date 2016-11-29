@@ -51,14 +51,13 @@
 			echo 'var siteURL = "https://' . $_GET['blog'] . '.tumblr.com/";';
 			echo 'var blogname = "' . $_GET['blog'] . '";';
 		}else{
-			// temporary default
-			echo 'var siteURL = "https://solacingsavant.tumblr.com/";';
-			echo 'var blogname = "solacingsavant";';
+			// default
+			echo 'var siteURL = "https://humanity-and-nature.tumblr.com/";';
+			echo 'var blogname = "humanity-and-nature";';
 		}
 		if(isset($_GET['theme']) && $_GET['theme'] !== ''){
 			echo 'var theme = "' . $_GET['theme'] . '";';
 		}else{
-			// temporary default
 			echo 'var theme = "Default";';
 		}
 		echo '</script>';

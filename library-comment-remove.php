@@ -6,11 +6,11 @@ if(isset($_SESSION['username']) && isset($_POST['id'])){
 
 		$pdo = db_connect();
 
-		$sql = 'DELETE FROM librarycomments WHERE id=:id';
+		$sql = 'DELETE FROM librarycomments WHERE id=:id AND (library=:username OR username=:username)';
 
 		$q = $pdo->prepare($sql);
 
-		$success = $q->execute([':id' => $_POST['id']]);
+		$success = $q->execute([':id' => $_POST['id'], ':username' => $_SESSION['username']]);
 
 		if($success){
 			echo 'comment deleted successfully';

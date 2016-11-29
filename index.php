@@ -21,7 +21,7 @@
 				<input type="text" name="blog" placeholder="humanity-and-nature" ></div>
 				<div><label>Book Theme</label><br />
 				<select name="theme">
-					<option value="style">Default</option>
+					<option>Default</option>
 					<option>Sky</option>
 					<option>Album</option>
 					<option>Corkboard</option>
@@ -35,7 +35,7 @@
 		<?php
 		session_start();
 		if(isset($_SESSION['username'])){
-			echo 'Logged in as ' . $_SESSION['username'];
+			echo $_SESSION['username'];
 			echo ' | <a href="library.php">My Library</a>';
 			echo ' | <a href="logout.php">Logout</a>';
 		}else{
@@ -43,5 +43,8 @@
 		}
 		?>
 	</div>
+	<form id="search" class="shadow" action="library.php" method="get">
+		<input type="text" name="user" placeholder="Library Search">
+	</form>
 </body>
 </html>

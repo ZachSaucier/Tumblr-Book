@@ -20,7 +20,8 @@ if(isset($_POST['blogname']) && isset($_POST['content'])){
 			session_start();
 			if(isset($_SESSION['username'])){
 				
-				$sql = 'INSERT INTO userblogs (username, blogname, theme) VALUES (:username, :blogname, :theme);';
+				$sql = 'INSERT INTO userblogs (username, blogname, theme) VALUES (:username, :blogname, :theme)'
+					. ' ON DUPLICATE KEY UPDATE theme=:theme;';
 
 				$q = $pdo->prepare($sql);
 
