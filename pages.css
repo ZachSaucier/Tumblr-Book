@@ -4,7 +4,7 @@
 }
 @font-face {
 	font-family: Bookman;
-	src: url(fonts/Bookman-OS-B.otf);
+	src: url(fonts/Bookman-OS-B.TTF);
 }
 *  {
 	box-sizing: border-box;
