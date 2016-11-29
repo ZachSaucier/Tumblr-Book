@@ -9,9 +9,12 @@
   <link rel="stylesheet" href="pages.css">
 </head>
 <body>
-	<h1><a href="index.php"><img class="icon" src="images/icon.png"/>TumblrBook</a></h1>
-	<h3>Turn any Tumblr blog into a printable book</h3>
-	<div id="main" class="container">
+	<div class="heading-container">
+		<h1><a href="index.php"><img class="icon" src="images/icon.png"/>tumblr book</a></h1>
+		<h3>Turn any Tumblr blog into a printable book</h3>
+	</div>
+	<div id="main" class="shadow">
+	<div class="container">
 	<?php
 	session_start();
 	$my_library = False;
@@ -195,6 +198,7 @@
 		
 	}
 	?>
+	</div>
 	</div>
 	<div id="login" class="container">
 		<?php

@@ -14,11 +14,15 @@ session_destroy();
   <meta http-equiv="refresh" content="1; url=index.php" />
 </head>
 <body>
-	<h1><a href="index.php"><img class="icon" src="images/icon.png"/>TumblrBook</a></h1>
-	<h3>Turn any Tumblr blog into a printable book</h3>
-	<div id="main" class="container">
+	<div class="heading-container">
+		<h1><a href="index.php"><img class="icon" src="images/icon.png"/>tumblr book</a></h1>
+		<h3>Turn any Tumblr blog into a printable book</h3>
+	</div>
+	<div id="main" class="shadow">
+		<div class="container">
 	<p>Logout successful</p>
 	<div><a href="index.php">Back</a><div>
+	</div>
 	</div>
 </body>
 </html>

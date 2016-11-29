@@ -9,24 +9,29 @@
   <link rel="stylesheet" href="pages.css">
 </head>
 <body>
-	<h1><a href="index.php"><img class="icon" src="images/icon.png"/>TumblrBook</a></h1>
-	<h3>Turn any Tumblr blog into a printable book</h3>
-	<div id="main" class="container">
-		<form action="tumblr-book.php" method="get">
-			<div><label>Tumblr Username</label><br />
-			<input type="text" name="blog" placeholder="solacingsavant" ></div>
-			<div><label>Book Theme</label><br />
-			<select name="theme">
-				<option value="style">Default</option>
-				<option>Sky</option>
-				<option>Album</option>
-				<option>Corkboard</option>
-			</select>
-			</div>
-			<input type="submit" value="Create">
-		</form>
+	<div class="heading-container">
+		<h1><a href="index.php"><img class="icon" src="images/icon.png"/>tumblr book</a></h1>
+		<h3>Turn any Tumblr blog into a printable book</h3>
 	</div>
-	<div id="login" class="container">
+	
+	<div id="main" class="shadow">
+		<div class="container">
+			<form action="tumblr-book.php" method="get">
+				<div><label>Tumblr Username</label><br />
+				<input type="text" name="blog" placeholder="humanity-and-nature" ></div>
+				<div><label>Book Theme</label><br />
+				<select name="theme">
+					<option value="style">Default</option>
+					<option>Sky</option>
+					<option>Album</option>
+					<option>Corkboard</option>
+				</select>
+				</div>
+				<input type="submit" value="Create">
+			</form>
+		</div>
+	</div>
+	<div id="login" class="container shadow light">
 		<?php
 		session_start();
 		if(isset($_SESSION['username'])){

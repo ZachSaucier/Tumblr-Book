@@ -1,13 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@font-face {
+	font-family: Helvetica;
+	src: url(fonts/Helvetica.otf);
+}
+@font-face {
+	font-family: Bookman;
+	src: url(fonts/Bookman-OS-B.otf);
+}
+*  {
+	box-sizing: border-box;
+}
+
 body {
-	background-color: #7fb0ff;
-    font-family: 'Source Sans Pro', sans-serif;
+	background-color: #5572a0;
+    font-family: Helvetica, sans-serif;
+    font-size: 15px;
+	color: white;
+	margin: 0;
+}
+
+.heading-container {
 	text-align: center;
 }
 h1 {
+	font-family: Bookman, serif;
 	font-size: 48px;
-	color: white;
-	text-shadow: 3px 3px black;
+	text-shadow: -5px -5px 0 #36465d, -5px -4px 0 #36465d, -5px -3px 0 #36465d, -5px -2px 0 #36465d, -5px -1px 0 #36465d, -5px 0px 0 #36465d, -5px 1px 0 #36465d, -5px 2px 0 #36465d, -5px 3px 0 #36465d, -5px 4px 0 #36465d, -5px 5px 0 #36465d, -4px -5px 0 #36465d, -4px -4px 0 #36465d, -4px -3px 0 #36465d, -4px -2px 0 #36465d, -4px -1px 0 #36465d, -4px 0px 0 #36465d, -4px 1px 0 #36465d, -4px 2px 0 #36465d, -4px 3px 0 #36465d, -4px 4px 0 #36465d, -4px 5px 0 #36465d, -3px -5px 0 #36465d, -3px -4px 0 #36465d, -3px -3px 0 #36465d, -3px -2px 0 #36465d, -3px -1px 0 #36465d, -3px 0px 0 #36465d, -3px 1px 0 #36465d, -3px 2px 0 #36465d, -3px 3px 0 #36465d, -3px 4px 0 #36465d, -3px 5px 0 #36465d, -2px -5px 0 #36465d, -2px -4px 0 #36465d, -2px -3px 0 #36465d, -2px -2px 0 #36465d, -2px -1px 0 #36465d, -2px 0px 0 #36465d, -2px 1px 0 #36465d, -2px 2px 0 #36465d, -2px 3px 0 #36465d, -2px 4px 0 #36465d, -2px 5px 0 #36465d, -1px -5px 0 #36465d, -1px -4px 0 #36465d, -1px -3px 0 #36465d, -1px -2px 0 #36465d, -1px -1px 0 #36465d, -1px 0px 0 #36465d, -1px 1px 0 #36465d, -1px 2px 0 #36465d, -1px 3px 0 #36465d, -1px 4px 0 #36465d, -1px 5px 0 #36465d, 0px -5px 0 #36465d, 0px -4px 0 #36465d, 0px -3px 0 #36465d, 0px -2px 0 #36465d, 0px -1px 0 #36465d, 0px 0px 0 #36465d, 0px 1px 0 #36465d, 0px 2px 0 #36465d, 0px 3px 0 #36465d, 0px 4px 0 #36465d, 0px 5px 0 #36465d, 1px -5px 0 #36465d, 1px -4px 0 #36465d, 1px -3px 0 #36465d, 1px -2px 0 #36465d, 1px -1px 0 #36465d, 1px 0px 0 #36465d, 1px 1px 0 #36465d, 1px 2px 0 #36465d, 1px 3px 0 #36465d, 1px 4px 0 #36465d, 1px 5px 0 #36465d, 2px -5px 0 #36465d, 2px -4px 0 #36465d, 2px -3px 0 #36465d, 2px -2px 0 #36465d, 2px -1px 0 #36465d, 2px 0px 0 #36465d, 2px 1px 0 #36465d, 2px 2px 0 #36465d, 2px 3px 0 #36465d, 2px 4px 0 #36465d, 2px 5px 0 #36465d, 3px -5px 0 #36465d, 3px -4px 0 #36465d, 3px -3px 0 #36465d, 3px -2px 0 #36465d, 3px -1px 0 #36465d, 3px 0px 0 #36465d, 3px 1px 0 #36465d, 3px 2px 0 #36465d, 3px 3px 0 #36465d, 3px 4px 0 #36465d, 3px 5px 0 #36465d, 4px -5px 0 #36465d, 4px -4px 0 #36465d, 4px -3px 0 #36465d, 4px -2px 0 #36465d, 4px -1px 0 #36465d, 4px 0px 0 #36465d, 4px 1px 0 #36465d, 4px 2px 0 #36465d, 4px 3px 0 #36465d, 4px 4px 0 #36465d, 4px 5px 0 #36465d, 5px -5px 0 #36465d, 5px -4px 0 #36465d, 5px -3px 0 #36465d, 5px -2px 0 #36465d, 5px -1px 0 #36465d, 5px 0px 0 #36465d, 5px 1px 0 #36465d, 5px 2px 0 #36465d, 5px 3px 0 #36465d, 5px 4px 0 #36465d, 5px 5px 0 #36465d;
 	margin: 5px;
 }
 h2 {
@@ -19,34 +36,61 @@ h2 {
 h3 {
 	margin-top: 0px;
 	color: white;
+	font-weight: normal;
 }
 .container {
-	background-color: white;
 	padding: 10px;
-	border-radius: 15px;
+	max-width: 990px;
+	margin: 0 auto;
+}
+.shadow {
 	box-shadow: 2px 2px 8px black;
 }
-#main{
-	width: 350px;
-	margin: auto;
+.container.light {
+	background-color: white;
+	color: black;
 }
-[type=text], [type=password], select {
-	width: 135px;
+
+#main {
+	height: calc(100vh - 109px);
+	min-height: 202px;
+	background: #36465d;
 }
-/*
-[type=submit], button {
-	background-color: #7fb0ff;
-	border-radius: 5px;
-	padding: 2px;
+
+
+label {
+	font-size: 1.5rem;
 }
-*/
+[type="submit"] {
+	background-color: #5572a0;
+	color: white;
+	border: 0;
+	padding: 0.7rem 1.5rem;
+	font-size: 1rem;
+	border-radius: 3px;
+}
+[type="submit"]:hover {
+	box-shadow: 0px 2px 8px black;
+}
+[type="text"], select, [type="password"] {
+	width: 100%;
+	height: 35px;
+	font-size: 1rem;
+	margin: 5px 0;
+	padding: 0 10px;
+	border-radius: 3px;
+}
+
+form {
+	margin-top: 1.5rem;
+}
 form div {
 	margin-bottom: 10px;
 }
 #login {
 	position:fixed;
-	top: 5px;
-	right: 5px;
+	top: 17px;
+    right: 25px;
 }
 #blogs {
 	margin-top: 15px;
@@ -94,6 +138,7 @@ form div {
 }
 a, a:visited, a:active {
 	text-decoration: none;
+	color: black;
 }
 a:hover {
 	text-decoration: underline;

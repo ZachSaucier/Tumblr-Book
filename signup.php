@@ -37,9 +37,12 @@
   
 </head>
 <body>
-	<h1><a href="index.php"><img class="icon" src="images/icon.png"/>TumblrBook</a></h1>
-	<h3>Turn any Tumblr blog into a printable book</h3>
-	<div id="main" class="container">
+	<div class="heading-container">
+		<h1><a href="index.php"><img class="icon" src="images/icon.png"/>tumblr book</a></h1>
+		<h3>Turn any Tumblr blog into a printable book</h3>
+	</div>
+	<div id="main" class="shadow">
+		<div class="container">
 		<?php
 		if(isset($invalid) && $invalid === True){
 			echo '<div class="error">Sign Up failed, username may be taken</div>';
@@ -50,6 +53,7 @@
 			<div><label>Password<br /><input type="text" name="password" size="24"></label></div>
 			<input type="submit" value="Create Account">
 		</form>
+	</div>
 	</div>
 </body>
 </html>
