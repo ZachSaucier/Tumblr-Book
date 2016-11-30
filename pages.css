@@ -281,6 +281,10 @@ textarea {
 		-ms-transform: translateX(-50%);
 	    transform: translateX(-50%);
 	}
+
+	#main {
+		min-height: calc(100vh - 224px);
+	}
 }
 
 @media (max-width: 800px) {
