@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link href="images/favicon.png" rel="icon">
-  <title>Tumblr Book - Login</title>
+  <title>Tumblr Book - Sign Up</title>
 
   <link rel="stylesheet" href="pages.css">
   

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link href="images/favicon.png" rel="icon">
-  <title>Tumblr Book</title>
+  <title>Tumblr Book - Create</title>
 
   <?php
   if(isset($_GET['theme']) && $_GET['theme'] !== ''){
@@ -35,7 +35,15 @@
 				echo '</div>';
 				echo '<a id="home" href="index.php">Home</a>';
 				echo '<button id="printButton">Print this Tumblr blog</button>';
-				echo '<script>var printButton = document.getElementById("printButton"); printButton.onclick = function() {  printButton.style.display = "none"; window.print(); printButton.style.display = "block";};</script>';
+				echo '<script>var printButton = document.getElementById("printButton");'
+				.'var homeButton = document.getElementById("home");'
+				.'printButton.onclick = function() {'
+				.'printButton.style.display = "none";'
+				.'homeButton.style.display = "none";'
+				.'window.print();'
+				.'printButton.style.display = "block";'
+				.'homeButton.sytle.display = "inline"'
+				.'};</script>';
 			}else{
 				$contentNotFound = True;
 			}

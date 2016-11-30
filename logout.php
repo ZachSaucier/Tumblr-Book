@@ -9,7 +9,7 @@ session_destroy();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link href="images/favicon.png" rel="icon">
-  <title>Tumblr Book</title>
+  <title>Tumblr Book - Logout</title>
   <link rel="stylesheet" href="pages.css">
   <meta http-equiv="refresh" content="1; url=index.php" />
 </head>
@@ -20,8 +20,8 @@ session_destroy();
 	</div>
 	<div id="main" class="shadow">
 		<div class="container">
-	<p>Logout successful</p>
-	<div><a href="index.php">Back</a><div>
+	<h2>Logout successful</h2>
+	<div><a href="index.php">Home</a><div>
 	</div>
 	</div>
 </body>

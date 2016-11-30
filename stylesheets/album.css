@@ -17,6 +17,7 @@ button {
     padding-top:1in;
     padding-bottom:0.2in;
     margin:0 auto;
+	overflow: auto;
 }
 #avatar { 
     position:absolute;

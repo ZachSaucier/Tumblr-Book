@@ -4,18 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link href="images/favicon.png" rel="icon">
-  <title>Tumblr Book</title>
-
-  <link rel="stylesheet" href="pages.css">
-</head>
-<body>
-	<div class="heading-container">
-		<h1><a href="index.php"><img class="icon" src="images/icon.png"/>tumblr book</a></h1>
-		<h3>Turn any Tumblr blog into a printable book</h3>
-	</div>
-	<div id="main" class="shadow">
-	<div class="container">
-	<?php
+  <?php
 	session_start();
 	$my_library = False;
 	if(isset($_GET['user'])){
@@ -26,10 +15,26 @@
 	}else if(isset($_SESSION['username'])){
 		$user = $_SESSION['username'];
 		$my_library = True;
-	}else{
-		echo '<div>You must be logged in to view your library</div>';
 	}
 	if(isset($user)){
+		echo '<title>Tumblr Book - '.$user.'\'s Library</title>';
+	}else{
+		echo '<title>Tumblr Book - Library</title>';
+	}
+  ?>
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+	<div class="heading-container">
+		<h1><a href="index.php"><img class="icon" src="images/icon.png"/>tumblr book</a></h1>
+		<h3>Turn any Tumblr blog into a printable book</h3>
+	</div>
+	<div id="main" class="shadow">
+	<div class="container">
+	<?php
+	if(!isset($user)){
+		echo '<h2 id="library-name" align="center">You must be logged in to view your library</h2>';
+	}else{
 		
 		require('db.php');
 		try {
@@ -75,7 +80,7 @@
 					if((isset($header) && $header !== '')|| $my_library){
 						echo '<br />';
 					}
-					echo '<div>'.$user.'\'s library is empty.</div>';
+					echo '<div id="blogs">'.$user.'\'s library is empty.</div>';
 				}else{
 					echo '<div id="blogs">';
 					
@@ -112,7 +117,7 @@
 						
 						echo '<div class="library-entry light"><div class="flex"><div><a href="tumblr-book.php?blog='.$blog['blogname'].'&theme='.$blog['theme'].'&cached=true">';
 						echo '<img src="https://api.tumblr.com/v2/blog/'.$blog['blogname'].'.tumblr.com/avatar" /></a></div>';
-						echo '<div><div class="blogname">'.$blog['blogname'].'</div></a>';
+						echo '<div><div class="blogname"><a href="tumblr-book.php?blog='.$blog['blogname'].'&theme='.$blog['theme'].'&cached=true">'.$blog['blogname'].'</a></div>';
 						
 						if(isset($my_blogs)){
 							echo '<div class="library-add">';
@@ -151,7 +156,7 @@
 				}
 					
 				echo '<h2>Comments</h2>';
-				echo '<div id="comments">';
+				echo '<div id="comment-section">';
 				
 				$sql = 'SELECT id, username, created, content FROM librarycomments WHERE library=:username ORDER BY id';
 
@@ -161,6 +166,7 @@
 
 				$comments = $q->fetchAll(PDO::FETCH_ASSOC);
 
+				echo '<div id="comments">';
 				if(count($comments) < 1) {
 					echo '<div class="comment">No comments to display</div>';
 				}
@@ -174,6 +180,7 @@
 					}
 					echo '</div>';
 				}
+				echo '</div>';
 				if(!$my_library && isset($_SESSION['username'])){
 					echo '<textarea id="new-comment" placeholder="Leave a comment on '.$user.'\'s library..."></textarea>';
 					echo '<button id="post-comment">Post Comment</button>';
@@ -231,7 +238,7 @@
 		?>
 	</div>
 	<form id="search" class="shadow" action="library.php" method="get">
-		<input type="text" name="user" placeholder="Library Search">
+		<input type="text" name="user" placeholder="User Library Search">
 	</form>
 	<script>
 		<?php

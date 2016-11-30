@@ -1,7 +1,6 @@
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var date = new Date();
 date = months[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear();
-
 if(myLibrary){
 	var header = $('#header').text();
 	if(header === ''){
@@ -78,7 +77,7 @@ $('.library-entry').each(function(){
 				error: function(){
 					console.log('error on database delete query');
 				}
-			});	
+			});
 		}
 	});
 	if(add.text() === 'Add to Library'){		
@@ -127,6 +126,10 @@ $('.comment').each(function(){
 });
 
 $('#post-comment').click(function(){
+	var currentComments = $('div.comment');
+	if(currentComments.length == 1 && currentComments.text() === 'No comments to display'){
+		currentComments.slideUp();
+	}
 	var newComment = $('<div class="comment">');
 	var content = $('#new-comment').val();
 	newComment.html('<div><a href="library.php?user='+username+'">'+username+'</a> <span class="comment-date">'+date+'</span></div><div>'+content+'</div>');

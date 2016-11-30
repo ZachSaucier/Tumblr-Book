@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Palanquin+Dark');
+@import url('https://fonts.googleapis.com/css?family=Palanquin+Dark|Source+Sans+Pro');
 
 body {
-	font-family: 'Palanquin Dark', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 #fromTumblr {
@@ -9,13 +9,16 @@ body {
     margin: 0 auto;
     min-height: 10in;
     background: #7fb0ff;
-	background-image: url('https://orig04.deviantart.net/a741/f/2008/228/b/a/wooden_clouds__wallpaper_tile__by_start_static.jpg');
+	background-image: url('../images/sky.jpg');
 	border-radius: 25px;
+	font-family: 'Palanquin Dark', sans-serif;
     text-align: center;
     display: block;
     position: relative;
     padding-top: 1in;
     padding-bottom: 0.2in;
+	/* force background to print (Chrome and Safari) */
+	-webkit-print-color-adjust: exact;
 }
 
 #avatar {

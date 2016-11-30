@@ -42,8 +42,10 @@ window.filter = function filter (data) {
     printButton.innerText = "Print this Tumblr blog";
     printButton.onclick = function() { 
 		printButton.style.display = "none";
+		homeButton.style.display = "none";
 		window.print();
 		printButton.style.display = "block";
+		homeButton.style.display = "inline";
 	};
     indentedAppend(document.body, printButton);
     
