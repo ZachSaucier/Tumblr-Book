@@ -19,13 +19,13 @@
 			<form action="tumblr-book.php" method="get">
 				<div><label>Tumblr Username</label><br />
 				<input type="text" name="blog" placeholder="humanity-and-nature" ></div>
-				<div><label>Book Theme</label><br />
-				<select name="theme">
-					<option>Default</option>
-					<option>Sky</option>
-					<option>Album</option>
-					<option>Corkboard</option>
-				</select>
+				<label>Book Theme</label>
+				<input type="hidden" name="theme" value="Default">
+				<div id="theme" class="flex">
+					<div class="selected"><img src="images/preview-default.png"><div>Default</div></div>
+					<div><img src="images/preview-sky.png"><div>Sky</div></div>
+					<div><img src="images/preview-corkboard.png"><div>Corkboard</div></div>
+					<div><img src="images/preview-album.png"><div>Album</div></div>
 				</div>
 				<input type="submit" value="Create">
 			</form>
@@ -46,5 +46,7 @@
 	<form id="search" class="shadow" action="library.php" method="get">
 		<input type="text" name="user" placeholder="Library Search">
 	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="preview.js"></script>
 </body>
 </html>

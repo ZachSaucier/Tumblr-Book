@@ -92,6 +92,38 @@ form, #library-name {
 form div {
 	margin-bottom: 10px;
 }
+
+#theme {
+	border: 2px solid white;
+	border-radius: 15px;
+	overflow: hidden;
+	margin: auto;
+	margin-bottom: 10px;
+	width: 760px;
+}
+#theme div img {
+	margin: 0 15px 0 15px;
+	width: 160px;
+	height: 186px;
+}
+#theme>div {
+	text-align: center;
+	padding: 20px 0 20px 0;
+	border-radius: 15px;
+	cursor: pointer;
+	margin-bottom: 0px;
+    -moz-transition: all .15s linear;
+    -webkit-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+}
+#theme>div div{
+	margin-bottom: 0;
+}
+#theme div.selected {
+	background-color: #5572a0;
+}
+
 #login {
 	position:fixed;
 	top: 17px;
