@@ -59,7 +59,15 @@
 			<div><label>Password<br /><input type="password" name="password" size="24"></label></div>
 			<input type="submit" value="Login">
 		</form>
+		</div>
 	</div>
+	<div id="login" class="container shadow light">
+		<?php
+			echo '<a href="signup.php">Sign Up Instead</a>';
+		?>
 	</div>
+	<form id="search" class="shadow" action="library.php" method="get">
+		<input type="text" name="user" placeholder="User Library Search">
+	</form>
 </body>
 </html>

@@ -55,5 +55,14 @@
 		</form>
 	</div>
 	</div>
+
+	<div id="login" class="container shadow light">
+		<?php
+			echo '<a href="login.php">Login Instead</a>';
+		?>
+	</div>
+	<form id="search" class="shadow" action="library.php" method="get">
+		<input type="text" name="user" placeholder="User Library Search">
+	</form>
 </body>
 </html>

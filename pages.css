@@ -10,10 +10,13 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 15px;
+}
+
 body {
 	background-color: #5572a0;
     font-family: Helvetica, sans-serif;
-    font-size: 15px;
 	color: white;
 	margin: 0;
 }
@@ -46,7 +49,7 @@ h3 {
 }
 .light {
 	background-color: white;
-	color: black;
+	color: #444;
 }
 
 #main {
@@ -83,6 +86,7 @@ button {
 	font-size: 1rem;
 	margin: 5px 0;
 	padding: 0 10px;
+	border: none;
 	border-radius: 3px;
 }
 
@@ -95,29 +99,27 @@ form div {
 
 #theme {
 	border: 2px solid white;
-	border-radius: 15px;
+	border-radius: 3px;
 	overflow: hidden;
-	margin: auto;
 	margin-bottom: 10px;
-	width: 760px;
 }
 #theme div img {
 	margin: 0 15px 0 15px;
 	width: 160px;
 	height: 186px;
 }
-#theme>div {
+#theme > div {
 	text-align: center;
 	padding: 20px 0 20px 0;
-	border-radius: 15px;
+	border-radius: 3px;
 	cursor: pointer;
 	margin-bottom: 0px;
+	-webkit-transition: all .15s linear;
     -moz-transition: all .15s linear;
-    -webkit-transition: all .15s linear;
     -o-transition: all .15s linear;
     transition: all .15s linear;
 }
-#theme>div div{
+#theme > div div{
 	margin-bottom: 0;
 }
 #theme div.selected {
@@ -125,27 +127,28 @@ form div {
 }
 
 #login {
-	position:fixed;
+	border-radius: 3px;
+	position: absolute;
 	top: 17px;
     right: 25px;
 }
 #search {
-	position:fixed;
+	position: absolute;
 	top: 17px;
     left: 25px;
 	padding: 0;
 	margin: 0;
 }
 #search input {
-	padding: 0 0 0 5px;
+	padding: 0 0 0 39px;
 	margin: 0;
-	border-radius: 0;
-	height: 35px;
+	border-radius: 3px;
+	height: 37px;
 	width: 200px;
 	background-image: url('images/search.png');
 	background-size: 30px;
     background-repeat: no-repeat;
-	background-position: right center;
+	background-position: 3px 2px;
 }
 #blogs {
 	margin-top: 15px;
@@ -179,6 +182,7 @@ form div {
 }
 #header, .comment div a, .similar-library div a {
 	font-size: 1.1rem;
+	color: hsla(0,0%,100%,.6);
 }
 .comment-date {
 	margin-left: 8px; 
@@ -212,7 +216,7 @@ form div {
 }
 
 .light a, .light a:visited, .light a:active {
-	color: black;
+	color: #444;
 }
 a, a:visited, a:active {
 	text-decoration: none;
@@ -262,5 +266,29 @@ textarea {
 		-webkit-transform: translateX(-50%);
 		-ms-transform: translateX(-50%);
 		transform: translateX(-50%);
+	}
+
+	.heading-container h3 {
+	    padding-bottom: 115px;
+	}
+	#login {
+		top: 150px;
+	}
+	#search {
+		top: 100px;
+	    left: 50%;
+	    -webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+	    transform: translateX(-50%);
+	}
+}
+
+@media (max-width: 800px) {
+	#theme {
+		display: block;
+	}
+	#theme div {
+		width: 49%;
+    	display: inline-block;
 	}
 }

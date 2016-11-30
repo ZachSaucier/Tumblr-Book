@@ -44,7 +44,7 @@
 		?>
 	</div>
 	<form id="search" class="shadow" action="library.php" method="get">
-		<input type="text" name="user" placeholder="Library Search">
+		<input type="text" name="user" placeholder="User Library Search">
 	</form>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="preview.js"></script>
