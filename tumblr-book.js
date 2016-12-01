@@ -88,7 +88,7 @@ window.filter = function filter (data) {
             stripQuote(posts[i]);
         }
         else {
-            alert("Unknown post type of: " + posts[i].type);
+            console.log("Unknown post type of: " + posts[i].type);
         }
     });
 	
@@ -127,7 +127,12 @@ function stripPhoto(post) {
     var charCount = post.caption.replace(/[^A-Z]/gi, "").length;
     for(var i = 0; i < post.photos.length; i++) {
         if(i < maxNumPhotosPerPost) {
-            var imgURL = post.photos[i].alt_sizes[3].url;
+			var imgURL;
+			if(post.photos[i].alt_sizes[3] !== undefined){
+				imgURL = post.photos[i].alt_sizes[3].url;
+			}else{
+				imgURL = post.photos[i].alt_sizes[2].url;
+			}
             toAdd.className = "post photo";
             if(charCount >= longCharMin) {
                 toAdd.className += " big";
